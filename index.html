@@ -9,14 +9,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style id="dynamicCustomFonts"></style>
-
-<style id="themeVars">
+<style>
   :root {
     --void: #0a0a0a;
-    --void-deep: #0a0a0a;
     --ink: #0a0a0a;
     --stardust: #f5f5f7;
     --stardust-dim: #a1a1a6;
@@ -27,10 +24,6 @@
     --font-body: 'Manrope', sans-serif;
     --bg-image-url: url('https://i.ibb.co/3yKHhXX4/Perfumes-Nebula-Fondo.png');
     --max-w: 1180px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
 
   * { box-sizing: border-box; }
@@ -50,7 +43,7 @@
     min-height: 100vh;
   }
 
-  h1, h2, h3, .serif, .heading-font {
+  h1, h2, h3 {
     font-family: var(--font-heading);
     font-weight: 500;
     letter-spacing: 0.02em;
@@ -59,7 +52,6 @@
   a { color: inherit; text-decoration: none !important; }
   img { max-width: 100%; display: block; }
   button { font-family: inherit; cursor: pointer; }
-  :focus-visible { outline: 1px solid var(--gold-mist-bright); outline-offset: 3px; }
 
   .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
 
@@ -69,35 +61,26 @@
     z-index: 40;
     backdrop-filter: blur(10px);
     background: transparent;
-    border-bottom: none;
   }
   .header-inner {
     display: flex; align-items: center; justify-content: space-between;
     padding: 14px 28px;
     max-width: var(--max-w); margin: 0 auto;
   }
-  .logo-link { display: flex; align-items: center; text-decoration: none !important; }
   .logo-link img { height: 42px; width: auto; object-fit: contain; }
   nav.top-nav { display: flex; align-items: center; gap: 28px; }
-  nav.top-nav a {
-    text-decoration: none !important;
-    color: #ffffff !important;
-  }
+  nav.top-nav a { color: #ffffff !important; }
   nav.top-nav a:hover { color: var(--gold-mist-bright) !important; }
 
   .hero {
     position: relative;
-    min-height: 78vh;
+    min-height: 60vh;
     display: flex;
     align-items: flex-end;
-    overflow: hidden;
-    padding-bottom: 80px;
+    padding-bottom: 60px;
     background: transparent; 
   }
-  .hero-bg { display: none; }
-  .stars { display: none; }
   .hero-content { position: relative; z-index: 2; max-width: var(--max-w); margin: 0 auto; padding: 0 28px; width: 100%; }
-  .hero-eyebrow { color: #ffffff !important; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; }
   .hero h1 {
     font-size: clamp(2.5rem, 5.5vw, 4.4rem);
     line-height: 1.08;
@@ -116,13 +99,114 @@
     font-size: 0.85rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-decoration: none !important;
     border-radius: 4px;
     transition: all 0.3s ease;
   }
-  .btn-primary:hover { background: var(--gold-mist); color: var(--void-deep); }
+  .btn-primary:hover { background: var(--gold-mist); color: #000; }
 
-  .catalog { padding: 80px 0 60px; }
+  /* =========================================================================
+   * SECCIÓN PRINCIPAL EN GRANDE: GESTOR Y EDITOR DE PERFUMES
+   * ========================================================================= */
+  .admin-editor-section {
+    padding: 60px 0;
+    margin-bottom: 40px;
+  }
+  .editor-card {
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid var(--gold-mist);
+    border-radius: 12px;
+    padding: 36px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+  }
+  .editor-header {
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  .editor-header h2 {
+    font-size: 2.4rem;
+    margin: 0 0 8px;
+    color: var(--gold-mist-bright);
+  }
+  .editor-header p {
+    margin: 0;
+    color: var(--stardust-dim);
+    font-size: 0.95rem;
+  }
+
+  .cp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .cp-field { display: flex; flex-direction: column; }
+  .cp-field.full { grid-column: 1 / -1; }
+  .cp-field label {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--stardust-dim); margin-bottom: 8px; font-weight: 600;
+  }
+  .cp-field input[type="text"],
+  .cp-field input[type="number"],
+  .cp-field textarea {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    color: var(--stardust);
+    padding: 12px 16px;
+    font-family: inherit; font-size: 0.95rem;
+    transition: border-color 0.25s ease;
+  }
+  .cp-field input:focus, .cp-field textarea:focus {
+    border-color: var(--gold-mist-bright); outline: none; background: rgba(0,0,0,0.8);
+  }
+  .cp-field textarea { resize: vertical; min-height: 90px; }
+
+  .file-input-wrapper { display: flex; gap: 12px; align-items: center; margin-top: 8px; }
+  .file-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px dashed var(--hairline) !important;
+    color: var(--stardust);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .file-btn:hover { border-color: var(--gold-mist) !important; background: rgba(184,153,107,0.15); }
+  .file-name { font-size: 0.8rem; color: var(--stardust-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 250px; }
+
+  .cp-actions { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; }
+  .btn-gold {
+    background: var(--gold-mist); border: 1px solid var(--gold-mist) !important; color: #000;
+    padding: 12px 28px; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 6px;
+    transition: all 0.25s ease;
+  }
+  .btn-gold:hover { background: #cbb085; border-color: #cbb085 !important; }
+  .btn-ghost {
+    background: transparent; border: 1px solid var(--hairline) !important; color: var(--stardust-dim);
+    padding: 12px 28px; font-size: 0.9rem; border-radius: 6px; transition: all 0.25s ease;
+  }
+  .btn-ghost:hover { color: var(--stardust); border-color: var(--stardust-dim) !important; }
+
+  .admin-row {
+    display: flex; align-items: center; gap: 16px;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+  }
+  .admin-row img { width: 50px; height: 60px; object-fit: contain; background: #000; border-radius: 4px; padding: 4px; flex-shrink: 0; }
+  .admin-row .info { flex-grow: 1; min-width: 0; }
+  .admin-row .info .name { font-family: var(--font-heading); font-size: 1.2rem; color: var(--stardust); }
+  .admin-row .info .meta { font-size: 0.85rem; color: var(--stardust-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .admin-row .row-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .icon-btn {
+    background: none; border: 1px solid var(--hairline) !important; color: var(--stardust-dim);
+    font-size: 0.8rem; padding: 8px 14px; border-radius: 4px; transition: all 0.25s ease;
+  }
+  .icon-btn:hover { color: var(--gold-mist-bright); border-color: var(--gold-mist-bright) !important; }
+  .icon-btn.danger:hover { color: #e5989b; border-color: #e5989b !important; }
+
+  /* CATÁLOGO DE PRODUCTOS */
+  .catalog { padding: 40px 0 60px; }
   .section-head {
     display: flex; align-items: flex-end; justify-content: space-between;
     gap: 20px; flex-wrap: wrap;
@@ -145,17 +229,11 @@
     color: var(--stardust);
     font-family: inherit;
     font-size: 0.95rem;
-    padding: 10px 8px;
+    padding: 10px 12px;
     border-radius: 4px;
-    transition: border-color 0.25s ease, background 0.25s ease;
   }
-  .field select { cursor: pointer; }
   .field select option { background: var(--ink); color: var(--stardust); }
-  .field input:focus, .field select:focus { border-color: var(--gold-mist-bright); background: rgba(0,0,0,0.7); outline: none; }
 
-  /* =========================================================================
-   * 📍 CONTENEDOR VISUAL DONDE SE RENDERIZAN Y MUESTRAN LOS PERFUMES
-   * ========================================================================= */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -167,12 +245,11 @@
     border-radius: 8px;
     padding: 24px;
     display: flex; flex-direction: column;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
   }
   .card:hover {
     transform: translateY(-4px);
     border-color: var(--gold-mist);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
   }
   .card-img {
     width: 100%;
@@ -181,15 +258,9 @@
     overflow: hidden;
     margin-bottom: 20px;
     background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(0,0,0,0.4));
-    position: relative;
     display: flex; align-items: center; justify-content: center;
   }
-  .card-img img { width: 100%; height: 100%; object-fit: contain; padding: 12px; transition: transform 0.5s ease; }
-  .card:hover .card-img img { transform: scale(1.06); }
-  .card-img .fallback {
-    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    color: var(--gold-mist); opacity: 0.6; font-size: 0.9rem;
-  }
+  .card-img img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
   .card h3 { font-size: 1.5rem; margin: 0 0 8px; color: var(--stardust); }
   .card .notes { color: #d1d1d1 !important; }
   .card .price {
@@ -207,19 +278,14 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     text-align: center;
-    text-decoration: none !important;
     border-radius: 4px;
     transition: all 0.25s ease;
   }
   .btn-buy:hover { border-color: var(--gold-mist-bright) !important; color: var(--gold-mist-bright); background: rgba(184,153,107,0.1); }
-  .empty-state {
-    padding: 60px 20px; text-align: center; color: var(--stardust-dim);
-    grid-column: 1/-1; background: var(--ink); border: 1px solid var(--hairline); border-radius: 8px;
-  }
 
   footer {
     border-top: 1px solid var(--hairline);
-    padding: 50px 0 34px;
+    padding: 40px 0;
     margin-top: 60px;
     background: rgba(0,0,0,0.5);
   }
@@ -227,174 +293,8 @@
     display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: 20px;
   }
-  .footer-inner .logo-link img { height: 32px; width: auto; }
-  .footer-links { display: flex; gap: 24px; align-items: center; }
-  .footer-links a, 
-  .admin-trigger {
-    color: #ffffff !important; 
-    text-decoration: none !important;
-  }
-  .footer-links a:hover { color: var(--gold-mist-bright) !important; }
-  .admin-trigger {
-    background: none; border: 1px solid var(--hairline) !important; color: var(--stardust-dim);
-    font-size: 0.82rem; font-family: inherit; padding: 6px 14px; border-radius: 20px;
-    transition: all 0.25s ease;
-  }
-  .admin-trigger:hover { color: var(--gold-mist-bright); border-color: var(--gold-mist-bright) !important; background: rgba(184,153,107,0.1); }
-  .footer-copy {
-    color: #a1a1a6 !important; 
-    opacity: 1 !important;
-  }
-
-  .modal-overlay {
-    position: fixed; inset: 0; z-index: 100;
-    background: rgba(4, 3, 8, 0.88);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  .modal-overlay.open { opacity: 1; pointer-events: auto; }
-  .modal {
-    background: var(--ink);
-    border: 1px solid var(--gold-mist);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    width: 100%; max-width: 900px;
-    max-height: 90vh;
-    display: flex; flex-direction: column;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .modal-head {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 28px;
-    border-bottom: 1px solid var(--hairline);
-    background: rgba(0,0,0,0.3);
-  }
-  .modal-head h2 { margin: 0; font-size: 1.8rem; color: var(--gold-mist-bright); }
-  .modal-close {
-    background: none; border: 1px solid var(--hairline) !important; color: var(--stardust-dim);
-    width: 36px; height: 36px; border-radius: 50%; font-size: 1rem; line-height: 1;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.25s ease;
-  }
-  .modal-close:hover { color: var(--gold-mist-bright); border-color: var(--gold-mist-bright) !important; background: rgba(184,153,107,0.1); }
-
-  .panel-tabs {
-    display: flex; overflow-x: auto;
-    border-bottom: 1px solid var(--hairline);
-    background: rgba(0,0,0,0.2);
-    padding: 0 20px;
-  }
-  .tab-btn {
-    background: none; border: none;
-    border-bottom: 2px solid transparent;
-    color: var(--stardust-dim);
-    padding: 14px 18px;
-    font-size: 0.85rem; letter-spacing: 0.04em;
-    white-space: nowrap; transition: all 0.25s ease;
-  }
-  .tab-btn:hover { color: var(--stardust); }
-  .tab-btn.active { color: var(--gold-mist-bright); border-bottom-color: var(--gold-mist-bright); font-weight: 600; }
-
-  .modal-body {
-    padding: 28px;
-    overflow-y: auto;
-    flex-grow: 1;
-  }
-
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
-  .cp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-  .cp-field { display: flex; flex-direction: column; margin-bottom: 18px; }
-  .cp-field.full { grid-column: 1 / -1; }
-  .cp-field label {
-    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--stardust-dim); margin-bottom: 8px; font-weight: 500;
-  }
-  .cp-field input[type="text"],
-  .cp-field input[type="number"],
-  .cp-field input[type="url"],
-  .cp-field select,
-  .cp-field textarea {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid var(--hairline);
-    border-radius: 6px;
-    color: var(--stardust);
-    padding: 10px 14px;
-    font-family: inherit; font-size: 0.9rem;
-    transition: border-color 0.25s ease;
-  }
-  .cp-field input:focus, .cp-field select:focus, .cp-field textarea:focus {
-    border-color: var(--gold-mist-bright); outline: none; background: rgba(0,0,0,0.6);
-  }
-  .cp-field textarea { resize: vertical; min-height: 80px; }
-
-  .file-input-wrapper {
-    display: flex; gap: 10px; align-items: center; margin-top: 6px;
-  }
-  .file-btn {
-    background: rgba(255,255,255,0.08);
-    border: 1px dashed var(--hairline) !important;
-    color: var(--stardust);
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    display: inline-block;
-  }
-  .file-btn:hover { border-color: var(--gold-mist) !important; background: rgba(184,153,107,0.15); }
-  .file-name { font-size: 0.75rem; color: var(--stardust-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px; }
-
-  .color-picker-group { display: flex; align-items: center; gap: 12px; }
-  .color-picker-group input[type="color"] {
-    -webkit-appearance: none; border: none; width: 38px; height: 38px;
-    border-radius: 6px; cursor: pointer; background: transparent;
-  }
-  .color-picker-group input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
-  .color-picker-group input[type="color"]::-webkit-color-swatch { border: 1px solid var(--hairline); border-radius: 6px; }
-
-  .cp-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
-  .btn-gold {
-    background: var(--gold-mist); border: 1px solid var(--gold-mist) !important; color: #000;
-    padding: 10px 22px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; border-radius: 6px;
-    transition: all 0.25s ease;
-  }
-  .btn-gold:hover { background: #cbb085; border-color: #cbb085 !important; }
-  .btn-ghost {
-    background: transparent; border: 1px solid var(--hairline) !important; color: var(--stardust-dim);
-    padding: 10px 22px; font-size: 0.85rem; border-radius: 6px; transition: all 0.25s ease;
-  }
-  .btn-ghost:hover { color: var(--stardust); border-color: var(--stardust-dim) !important; }
-  .btn-danger {
-    background: rgba(201,120,138,0.15); border: 1px solid rgba(201,120,138,0.4) !important; color: #e5989b;
-    padding: 10px 22px; font-size: 0.85rem; border-radius: 6px; transition: all 0.25s ease;
-  }
-  .btn-danger:hover { background: rgba(201,120,138,0.3); border-color: #e5989b !important; color: #fff; }
-
-  .admin-row {
-    display: flex; align-items: center; gap: 16px;
-    background: rgba(0,0,0,0.25);
-    border: 1px solid var(--hairline);
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-bottom: 12px;
-  }
-  .admin-row img { width: 46px; height: 58px; object-fit: contain; background: #000; border-radius: 4px; padding: 4px; flex-shrink: 0; }
-  .admin-row .info { flex-grow: 1; min-width: 0; }
-  .admin-row .info .name { font-family: var(--font-heading); font-size: 1.1rem; color: var(--stardust); }
-  .admin-row .info .meta { font-size: 0.78rem; color: var(--stardust-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .admin-row .row-actions { display: flex; gap: 8px; flex-shrink: 0; }
-  .icon-btn {
-    background: none; border: 1px solid var(--hairline) !important; color: var(--stardust-dim);
-    font-size: 0.78rem; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease;
-  }
-  .icon-btn:hover { color: var(--gold-mist-bright); border-color: var(--gold-mist-bright) !important; }
-  .icon-btn.danger:hover { color: #e5989b; border-color: #e5989b !important; }
+  .footer-inner img { height: 32px; width: auto; }
+  .footer-copy { color: #a1a1a6 !important; }
 
   .toast {
     position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
@@ -405,47 +305,88 @@
     pointer-events: none;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  @media (max-width: 640px) {
-    .header-inner { padding: 12px 20px; }
-    nav.top-nav { gap: 14px; }
-    nav.top-nav a { display: none; }
-    nav.top-nav a.always-show { display: inline; }
-    .catalog { padding: 40px 0; }
-    .hero h1 { font-size: 2.2rem; }
-    .modal { height: 95vh; max-height: 95vh; }
-    .modal-body { padding: 18px; }
-  }
 </style>
 </head>
 <body>
 
-<header id="mainHeader">
+<header>
   <div class="header-inner">
-    <a href="#top" class="logo-link" id="logoHeaderLink">
-      <img id="headerLogoImg" src="https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png" alt="Nébula Parfums">
+    <a href="#top" class="logo-link">
+      <img src="https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png" alt="Nébula Parfums">
     </a>
     <nav class="top-nav">
+      <a href="#gestor-perfumes">Subir / Editar Perfumes</a>
       <a href="#coleccion">Colección</a>
-      <a href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener" class="always-show" id="navInstagramLink">Instagram</a>
+      <a href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener">Instagram</a>
     </nav>
   </div>
 </header>
 
 <section class="hero" id="top">
-  <div class="hero-bg"></div>
-  <div class="stars"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow" id="displayHeroEyebrow"></p>
-    <h1 id="displayHeroTitle">TU PRESENCIA HABLA ANTES QUE TU.</h1>
-    <p id="displayHeroDesc">Fragancias exclusivas para quienes no pasan desapercibidos.</p>
-    <a href="#coleccion" class="btn-primary" id="displayHeroBtn">Explorar la colección</a>
+    <h1>TU PRESENCIA HABLA ANTES QUE TU.</h1>
+    <p>Fragancias exclusivas para quienes no pasan desapercibidos.</p>
+    <a href="#gestor-perfumes" class="btn-primary">Añadir nuevos perfumes</a>
   </div>
 </section>
 
+<!-- =========================================================================
+     📍 SECCIÓN PRINCIPAL: APARTADO EN GRANDE PARA SUBIR Y EDITAR PERFUMES
+   ========================================================================= -->
+<section class="admin-editor-section wrap" id="gestor-perfumes">
+  <div class="editor-card">
+    <div class="editor-header">
+      <h2>🛍️ Gestor de Perfumes Nébula</h2>
+      <p>Agrega, edita o elimina perfumes de tu catálogo. Los cambios se actualizarán inmediatamente en la tienda.</p>
+    </div>
+
+    <form class="cp-grid" id="productForm">
+      <input type="hidden" id="editingId" value="">
+      
+      <div class="cp-field full">
+        <label for="pName">Nombre del Perfume</label>
+        <input type="text" id="pName" required placeholder="Ej: Nébula Noir">
+      </div>
+
+      <div class="cp-field full">
+        <label for="pNotes">Notas Olfativas / Descripción</label>
+        <textarea id="pNotes" required placeholder="Ej: Oud, ámbar negro y vainilla ahumada sobre un fondo de cuero curtido."></textarea>
+      </div>
+
+      <div class="cp-field">
+        <label for="pPrice">Precio (COP)</label>
+        <input type="number" id="pPrice" min="0" step="1000" required placeholder="289000">
+      </div>
+
+      <div class="cp-field">
+        <label for="pImage">Imagen del Perfume (URL o Cargar Archivo)</label>
+        <input type="text" id="pImage" placeholder="https://... o selecciona un archivo abajo">
+        <div class="file-input-wrapper">
+          <label class="file-btn">
+            📁 Cargar Imagen desde PC
+            <input type="file" id="pImageFile" accept="image/*" style="display:none;">
+          </label>
+          <span class="file-name" id="pImageFileName">Sin archivo seleccionado</span>
+        </div>
+      </div>
+
+      <div class="cp-actions full">
+        <button type="submit" class="btn-gold" id="submitProductBtn">✨ Guardar y Publicar Perfume</button>
+        <button type="button" class="btn-ghost" id="cancelEditBtn" style="display:none;">Cancelar Edición</button>
+      </div>
+    </form>
+
+    <hr style="border:none; border-top:1px solid var(--hairline); margin: 36px 0 28px;">
+
+    <h3 style="margin: 0 0 18px; color: var(--gold-mist-bright); font-size: 1.8rem;" id="adminListCount">Perfumes Guardados</h3>
+    <div id="adminList"></div>
+  </div>
+</section>
+
+<!-- CATÁLOGO DE PRODUCTOS -->
 <main class="catalog wrap" id="coleccion">
   <div class="section-head">
-    <h2 id="displayCatalogTitle">La colección</h2>
+    <h2>Vista Previa del Catálogo</h2>
     <span class="count" id="resultsCount">0 fragancias</span>
   </div>
 
@@ -464,7 +405,6 @@
     </div>
   </div>
 
-  <!-- 📍 AQUÍ SE MUESTRAN LOS PERFUMES EN LA PÁGINA -->
   <div class="grid" id="productGrid"></div>
 </main>
 
@@ -472,241 +412,13 @@
   <div class="wrap">
     <div class="footer-inner">
       <a href="#top" class="logo-link">
-        <img id="footerLogoImg" src="https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png" alt="Nébula Parfums">
+        <img src="https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png" alt="Nébula Parfums">
       </a>
-      <div class="footer-links">
-        <a id="footerInstagramLink" href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener">@nebulaparfums</a>
-        <button class="admin-trigger" id="openAdminBtn" type="button">⚙️ Panel de Control</button>
-      </div>
+      <a href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener">@nebulaparfums</a>
     </div>
-    <p class="footer-copy" id="displayFooterText">© 2026 Nébula Parfums.</p>
+    <p class="footer-copy">© 2026 Nébula Parfums.</p>
   </div>
 </footer>
-
-<div class="modal-overlay" id="adminOverlay">
-  <div class="modal">
-    <div class="modal-head">
-      <h2>Panel de Control</h2>
-      <button class="modal-close" id="closeAdminBtn" type="button" aria-label="Cerrar">✕</button>
-    </div>
-
-    <div class="panel-tabs">
-      <button class="tab-btn active" data-tab="tabProducts">🛍️ Perfumes</button>
-      <button class="tab-btn" data-tab="tabTexts">📝 Textos</button>
-      <button class="tab-btn" data-tab="tabBranding">🖼️ Logos & Fondo</button>
-      <button class="tab-btn" data-tab="tabFonts">🔤 Tipografías</button>
-      <button class="tab-btn" data-tab="tabTheme">🎨 Estilos & Colores</button>
-      <button class="tab-btn" data-tab="tabReset">🔄 Restablecer</button>
-    </div>
-
-    <div class="modal-body">
-      <div class="tab-content active" id="tabProducts">
-        <form class="cp-grid" id="productForm">
-          <input type="hidden" id="editingId" value="">
-          <div class="cp-field full">
-            <label for="pName">Nombre del perfume</label>
-            <input type="text" id="pName" required placeholder="Ej: Nébula Noir">
-          </div>
-          <div class="cp-field full">
-            <label for="pNotes">Notas Olfativas / Descripción</label>
-            <textarea id="pNotes" required placeholder="Ej: Oud, ámbar negro y vainilla ahumada"></textarea>
-          </div>
-          <div class="cp-field">
-            <label for="pPrice">Precio (COP)</label>
-            <input type="number" id="pPrice" min="0" step="1000" required placeholder="289000">
-          </div>
-          <div class="cp-field">
-            <label for="pImage">Imagen (URL o Archivo local)</label>
-            <input type="text" id="pImage" placeholder="https://... o sube una imagen abajo">
-            <div class="file-input-wrapper">
-              <label class="file-btn">
-                📁 Subir Archivo
-                <input type="file" id="pImageFile" accept="image/*" style="display:none;">
-              </label>
-              <span class="file-name" id="pImageFileName">Sin archivo</span>
-            </div>
-          </div>
-          <div class="cp-actions full">
-            <button type="submit" class="btn-gold" id="submitProductBtn">Guardar perfume</button>
-            <button type="button" class="btn-ghost" id="cancelEditBtn" style="display:none;">Cancelar edición</button>
-          </div>
-        </form>
-
-        <hr style="border:none; border-top:1px solid var(--hairline); margin: 28px 0;">
-        <h4 style="margin: 0 0 16px; color: var(--gold-mist-bright);" id="adminListCount">Perfumes guardados</h4>
-        <div id="adminList"></div>
-      </div>
-
-      <div class="tab-content" id="tabTexts">
-        <div class="cp-grid">
-          <div class="cp-field">
-            <label for="cfgEyebrow">Hero Subtítulo (Eyebrow)</label>
-            <input type="text" id="cfgEyebrow">
-          </div>
-          <div class="cp-field">
-            <label for="cfgBtnText">Texto Botón Hero</label>
-            <input type="text" id="cfgBtnText">
-          </div>
-          <div class="cp-field full">
-            <label for="cfgTitle">Hero Título Principal</label>
-            <input type="text" id="cfgTitle">
-          </div>
-          <div class="cp-field full">
-            <label for="cfgDesc">Hero Descripción</label>
-            <textarea id="cfgDesc"></textarea>
-          </div>
-          <div class="cp-field">
-            <label for="cfgInstagram">Enlace Instagram</label>
-            <input type="url" id="cfgInstagram">
-          </div>
-          <div class="cp-field full">
-            <label for="cfgFooter">Texto Footer / Copyright</label>
-            <input type="text" id="cfgFooter">
-          </div>
-        </div>
-        <div class="cp-actions">
-          <button class="btn-gold" id="saveTextsBtn" type="button">Guardar Textos</button>
-        </div>
-      </div>
-
-      <div class="tab-content" id="tabBranding">
-        <div class="cp-grid">
-          <div class="cp-field full">
-            <label>Logo del Encabezado (Header)</label>
-            <input type="text" id="cfgHeaderLogoUrl" placeholder="URL del logo">
-            <div class="file-input-wrapper">
-              <label class="file-btn">
-                📁 Subir Logo Header
-                <input type="file" id="cfgHeaderLogoFile" accept="image/*" style="display:none;">
-              </label>
-              <span class="file-name" id="cfgHeaderLogoName">Sin archivo</span>
-            </div>
-          </div>
-          <div class="cp-field full">
-            <label>Logo del Pie de Página (Footer)</label>
-            <input type="text" id="cfgFooterLogoUrl" placeholder="URL del logo">
-            <div class="file-input-wrapper">
-              <label class="file-btn">
-                📁 Subir Logo Footer
-                <input type="file" id="cfgFooterLogoFile" accept="image/*" style="display:none;">
-              </label>
-              <span class="file-name" id="cfgFooterLogoName">Sin archivo</span>
-            </div>
-          </div>
-          <div class="cp-field full">
-            <label>Imagen de Fondo Personalizada (Opcional)</label>
-            <input type="text" id="cfgBgImageUrl" placeholder="URL de imagen de fondo">
-            <div class="file-input-wrapper">
-              <label class="file-btn">
-                📁 Subir Fondo de la Página
-                <input type="file" id="cfgBgImageFile" accept="image/*" style="display:none;">
-              </label>
-              <button class="btn-ghost" id="removeBgBtn" type="button" style="padding: 4px 12px; font-size: 0.75rem;">Quitar Fondo</button>
-            </div>
-          </div>
-        </div>
-        <div class="cp-actions">
-          <button class="btn-gold" id="saveBrandingBtn" type="button">Guardar Branding</button>
-        </div>
-      </div>
-
-      <div class="tab-content" id="tabFonts">
-        <div class="cp-grid">
-          <div class="cp-field">
-            <label for="fontHeadingSelect">Fuente de Títulos</label>
-            <select id="fontHeadingSelect">
-              <option value="'Cormorant Garamond', serif">Cormorant Garamond (Elegante)</option>
-              <option value="'Playfair Display', serif">Playfair Display (Clásica)</option>
-              <option value="'Cinzel', serif">Cinzel (Imperial)</option>
-              <option value="'Montserrat', sans-serif">Montserrat (Moderna)</option>
-              <option value="'Inter', sans-serif">Inter (Limpia)</option>
-            </select>
-          </div>
-          <div class="cp-field">
-            <label for="fontBodySelect">Fuente de Texto General</label>
-            <select id="fontBodySelect">
-              <option value="'Manrope', sans-serif">Manrope (Moderna)</option>
-              <option value="'Inter', sans-serif">Inter (Lectura)</option>
-              <option value="'Montserrat', sans-serif">Montserrat (Geométrica)</option>
-              <option value="'Cormorant Garamond', serif">Cormorant Garamond (Serif)</option>
-            </select>
-          </div>
-          <div class="cp-field full">
-            <label>Subir Fuente Personalizada (.ttf, .otf, .woff, .woff2)</label>
-            <div class="file-input-wrapper">
-              <label class="file-btn">
-                🔤 Subir Archivo de Fuente
-                <input type="file" id="customFontFile" accept=".ttf,.otf,.woff,.woff2" style="display:none;">
-              </label>
-              <span class="file-name" id="customFontFileName">Sin fuente personalizada subida</span>
-            </div>
-            <p style="font-size:0.75rem; color:var(--stardust-dim); margin-top:8px;">Una vez subida la fuente, se agregará a la lista de selección arriba con el nombre "Custom Uploaded Font".</p>
-          </div>
-        </div>
-        <div class="cp-actions">
-          <button class="btn-gold" id="saveFontsBtn" type="button">Aplicar Fuentes</button>
-        </div>
-      </div>
-
-      <div class="tab-content" id="tabTheme">
-        <div class="cp-grid">
-          <div class="cp-field">
-            <label>Color Dorado Principal (Acentos)</label>
-            <div class="color-picker-group">
-              <input type="color" id="colGold" value="#b8996b">
-              <span id="valGold">#b8996b</span>
-            </div>
-          </div>
-          <div class="cp-field">
-            <label>Color Dorado Brillante (Brillo)</label>
-            <div class="color-picker-group">
-              <input type="color" id="colGoldBright" value="#b8996b">
-              <span id="valGoldBright">#b8996b</span>
-            </div>
-          </div>
-          <div class="cp-field">
-            <label>Fondo de la Página (Void)</label>
-            <div class="color-picker-group">
-              <input type="color" id="colVoid" value="#0a0a0a">
-              <span id="valVoid">#0a0a0a</span>
-            </div>
-          </div>
-          <div class="cp-field">
-            <label>Fondo Tarjetas / Tarjetas (Ink)</label>
-            <div class="color-picker-group">
-              <input type="color" id="colInk" value="#0a0a0a">
-              <span id="valInk">#0a0a0a</span>
-            </div>
-          </div>
-          <div class="cp-field">
-            <label>Color de Texto Principal</label>
-            <div class="color-picker-group">
-              <input type="color" id="colStardust" value="#f5f5f7">
-              <span id="valStardust">#f5f5f7</span>
-            </div>
-          </div>
-          <div class="cp-field">
-            <label>Bordes sutiles (Hairline)</label>
-            <div class="color-picker-group">
-              <input type="color" id="colHairline" value="#b8996b">
-              <span id="valHairline">#b8996b</span>
-            </div>
-          </div>
-        </div>
-        <div class="cp-actions">
-          <button class="btn-gold" id="saveThemeBtn" type="button">Guardar Colores</button>
-        </div>
-      </div>
-
-      <div class="tab-content" id="tabReset">
-        <p style="color:var(--stardust); font-size:0.95rem;">Si deseas restaurar todos los valores iniciales (productos predeterminados, colores, textos y diseño), haz clic en el botón a continuación:</p>
-        <div class="cp-actions">
-          <button class="btn-danger" id="resetAllBtn" type="button">Restablecer Todo a Valores de Fábrica</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="toast" id="toast"></div>
 
@@ -714,13 +426,8 @@
 (function() {
   'use strict';
 
-  const STORAGE_KEY_PRODUCTS = 'nebulaParfums_products_v3';
-  const STORAGE_KEY_CONFIG = 'nebulaParfums_config_v3';
-  const ADMIN_PASSCODE = 'Sqr1027661736*';
+  const STORAGE_KEY_PRODUCTS = 'nebulaParfums_products_v4';
 
-  /* =========================================================================
-   * 📍 AQUÍ ES DONDE COLOCAS Y EDITAS LOS PERFUMES POR DEFECTO DEL CATÁLOGO
-   * ========================================================================= */
   const defaultProducts = [
     {
       id: 'p1',
@@ -745,57 +452,27 @@
     }
   ];
 
-  const defaultConfig = {
-    heroEyebrow: '',
-    heroTitle: 'TU PRESENCIA HABLA ANTES QUE TU.',
-    heroDesc: 'Fragancias exclusivas para quienes no pasan desapercibidos.',
-    heroBtnText: 'Explorar la colección',
-    instagramUrl: 'https://www.instagram.com/nebulaparfums/',
-    footerText: '© 2026 Nébula Parfums.',
-    headerLogoUrl: 'https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png',
-    footerLogoUrl: 'https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png',
-    bgImageUrl: 'https://i.ibb.co/3yKHhXX4/Perfumes-Nebula-Fondo.png',
-    fontHeading: "'Cormorant Garamond', serif",
-    fontBody: "'Manrope', sans-serif",
-    customFontCss: '',
-    colGold: '#b8996b',
-    colGoldBright: '#b8996b',
-    colVoid: '#0a0a0a',
-    colInk: '#0a0a0a',
-    colStardust: '#f5f5f7',
-    colHairline: 'rgba(184,153,107,0.35)'
-  };
-
   let products = [];
-  let config = { ...defaultConfig };
   let editingId = null;
 
   const formatCOP = (value) => new Intl.NumberFormat('es-CO', {
     style: 'currency', currency: 'COP', maximumFractionDigits: 0
   }).format(value);
 
-  function loadData() {
+  function loadProducts() {
     try {
       const storedProducts = localStorage.getItem(STORAGE_KEY_PRODUCTS);
       products = storedProducts ? JSON.parse(storedProducts) : [...defaultProducts];
     } catch(e) {
       products = [...defaultProducts];
     }
-
-    try {
-      const storedConfig = localStorage.getItem(STORAGE_KEY_CONFIG);
-      config = storedConfig ? { ...defaultConfig, ...JSON.parse(storedConfig) } : { ...defaultConfig };
-    } catch(e) {
-      config = { ...defaultConfig };
-    }
   }
 
-  function saveData() {
+  function saveProducts() {
     try {
       localStorage.setItem(STORAGE_KEY_PRODUCTS, JSON.stringify(products));
-      localStorage.setItem(STORAGE_KEY_CONFIG, JSON.stringify(config));
     } catch(e) {
-      showToast('⚠️ No se pudo guardar todo en LocalStorage.');
+      showToast('⚠️ No se pudo guardar en el almacenamiento local.');
     }
   }
 
@@ -805,79 +482,6 @@
     toast.classList.add('show');
     clearTimeout(showToast._t);
     showToast._t = setTimeout(() => toast.classList.remove('show'), 3000);
-  }
-
-  function applyConfigToUI() {
-    document.getElementById('displayHeroEyebrow').textContent = config.heroEyebrow;
-    document.getElementById('displayHeroTitle').textContent = config.heroTitle;
-    document.getElementById('displayHeroDesc').textContent = config.heroDesc;
-    document.getElementById('displayHeroBtn').textContent = config.heroBtnText;
-    document.getElementById('displayFooterText').textContent = config.footerText;
-
-    document.getElementById('navInstagramLink').href = config.instagramUrl;
-    document.getElementById('footerInstagramLink').href = config.instagramUrl;
-    document.getElementById('headerLogoImg').src = config.headerLogoUrl;
-    document.getElementById('footerLogoImg').src = config.footerLogoUrl;
-
-    const fontCssTag = document.getElementById('dynamicCustomFonts');
-    fontCssTag.innerHTML = config.customFontCss || '';
-
-    const rootStyle = document.documentElement.style;
-    rootStyle.setProperty('--void', config.colVoid);
-    rootStyle.setProperty('--void-deep', config.colVoid);
-    rootStyle.setProperty('--ink', config.colInk);
-    rootStyle.setProperty('--stardust', config.colStardust);
-    rootStyle.setProperty('--gold-mist', config.colGold);
-    rootStyle.setProperty('--gold-mist-bright', config.colGoldBright);
-    rootStyle.setProperty('--hairline', config.colHairline);
-    rootStyle.setProperty('--font-heading', config.fontHeading);
-    rootStyle.setProperty('--font-body', config.fontBody);
-
-    if (config.bgImageUrl) {
-      rootStyle.setProperty('--bg-image-url', `url('${config.bgImageUrl}')`);
-    } else {
-      rootStyle.setProperty('--bg-image-url', 'none');
-    }
-
-    document.getElementById('cfgEyebrow').value = config.heroEyebrow;
-    document.getElementById('cfgTitle').value = config.heroTitle;
-    document.getElementById('cfgDesc').value = config.heroDesc;
-    document.getElementById('cfgBtnText').value = config.heroBtnText;
-    document.getElementById('cfgInstagram').value = config.instagramUrl;
-    document.getElementById('cfgFooter').value = config.footerText;
-    document.getElementById('cfgHeaderLogoUrl').value = config.headerLogoUrl;
-    document.getElementById('cfgFooterLogoUrl').value = config.footerLogoUrl;
-    document.getElementById('cfgBgImageUrl').value = config.bgImageUrl || '';
-
-    document.getElementById('colGold').value = hexOnly(config.colGold);
-    document.getElementById('valGold').textContent = config.colGold;
-    document.getElementById('colGoldBright').value = hexOnly(config.colGoldBright);
-    document.getElementById('valGoldBright').textContent = config.colGoldBright;
-    document.getElementById('colVoid').value = hexOnly(config.colVoid);
-    document.getElementById('valVoid').textContent = config.colVoid;
-    document.getElementById('colInk').value = hexOnly(config.colInk);
-    document.getElementById('valInk').textContent = config.colInk;
-    document.getElementById('colStardust').value = hexOnly(config.colStardust);
-    document.getElementById('valStardust').textContent = config.colStardust;
-
-    setSelectOption('fontHeadingSelect', config.fontHeading);
-    setSelectOption('fontBodySelect', config.fontBody);
-  }
-
-  function hexOnly(colorStr) {
-    if(!colorStr) return '#0a0a0a';
-    if(colorStr.startsWith('#') && colorStr.length === 7) return colorStr;
-    return '#b8996b';
-  }
-
-  function setSelectOption(selectId, val) {
-    const sel = document.getElementById(selectId);
-    for(let i=0; i<sel.options.length; i++) {
-      if(sel.options[i].value === val) {
-        sel.selectedIndex = i;
-        return;
-      }
-    }
   }
 
   function escapeHtml(str){
@@ -908,9 +512,9 @@
 
     if(list.length === 0){
       grid.innerHTML = `
-        <div class="empty-state">
-          <h3>No encontramos esa fragancia</h3>
-          <p>Prueba con otro término o nota olfativa.</p>
+        <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--stardust-dim);">
+          <h3>No hay fragancias registradas</h3>
+          <p>Utiliza la sección de arriba para agregar tus perfumes.</p>
         </div>`;
       return;
     }
@@ -919,144 +523,22 @@
       <article class="card">
         <div class="card-img">
           <img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.name)}"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="fallback" style="display:none;">✧ Nébula</div>
+               onerror="this.style.display='none';">
         </div>
         <h3>${escapeHtml(p.name)}</h3>
         <p class="notes">${escapeHtml(p.notes)}</p>
         <p class="price">${formatCOP(p.price)}</p>
-        <a class="btn-buy" href="${config.instagramUrl}" target="_blank" rel="noopener">Comprar</a>
+        <a class="btn-buy" href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener">Comprar</a>
       </article>
     `).join('');
   }
 
-  const overlay = document.getElementById('adminOverlay');
-
-  function openAdmin() {
-    const code = window.prompt('Introduce la clave de acceso al Panel de Control:');
-    if(code === null) return;
-    if(code !== ADMIN_PASSCODE){
-      showToast('❌ Clave incorrecta.');
-      return;
-    }
-    overlay.classList.add('open');
-    renderAdminList();
-  }
-
-  function closeAdmin() {
-    overlay.classList.remove('open');
-    resetProductForm();
-  }
-
-  document.getElementById('openAdminBtn').addEventListener('click', openAdmin);
-  document.getElementById('closeAdminBtn').addEventListener('click', closeAdmin);
-  overlay.addEventListener('click', (e) => { if(e.target === overlay) closeAdmin(); });
-
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabButtons.forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    });
-  });
-
-  function handleFileInput(fileInputId, nameSpanId, callback) {
-    const fileInput = document.getElementById(fileInputId);
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if(!file) return;
-      document.getElementById(nameSpanId).textContent = file.name;
-      const reader = new FileReader();
-      reader.onload = function(evt) {
-        callback(evt.target.result);
-      };
-      reader.readAsDataURL(file);
-    });
-  }
-
-  handleFileInput('pImageFile', 'pImageFileName', (base64) => {
-    document.getElementById('pImage').value = base64;
-  });
-
-  handleFileInput('cfgHeaderLogoFile', 'cfgHeaderLogoName', (base64) => {
-    document.getElementById('cfgHeaderLogoUrl').value = base64;
-  });
-
-  handleFileInput('cfgFooterLogoFile', 'cfgFooterLogoName', (base64) => {
-    document.getElementById('cfgFooterLogoUrl').value = base64;
-  });
-
-  handleFileInput('cfgBgImageFile', 'cfgBgImageUrl', (base64) => {
-    document.getElementById('cfgBgImageUrl').value = base64;
-  });
-
-  handleFileInput('customFontFile', 'customFontFileName', (base64Font) => {
-    const fontName = 'CustomFont_' + Date.now();
-    config.customFontCss = `@font-face { font-family: '${fontName}'; src: url('${base64Font}'); }`;
-
-    const headingSel = document.getElementById('fontHeadingSelect');
-    const bodySel = document.getElementById('fontBodySelect');
-
-    const opt1 = document.createElement('option');
-    opt1.value = `'${fontName}', sans-serif`;
-    opt1.textContent = `★ Subida: ${fontName}`;
-    headingSel.appendChild(opt1);
-
-    const opt2 = document.createElement('option');
-    opt2.value = `'${fontName}', sans-serif`;
-    opt2.textContent = `★ Subida: ${fontName}`;
-    bodySel.appendChild(opt2);
-
-    headingSel.value = `'${fontName}', sans-serif`;
-    showToast('✨ Fuente subida con éxito y seleccionada.');
-  });
-
-  const productForm = document.getElementById('productForm');
-  productForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('pName').value.trim();
-    const notes = document.getElementById('pNotes').value.trim();
-    const price = parseInt(document.getElementById('pPrice').value, 10);
-    const image = document.getElementById('pImage').value.trim();
-
-    if(!name || !notes || !image || isNaN(price)) {
-      showToast('Por favor completa todos los campos.');
-      return;
-    }
-
-    if(editingId) {
-      products = products.map(p => p.id === editingId ? { ...p, name, notes, price, image } : p);
-      showToast('Perfume actualizado');
-    } else {
-      products.push({ id: 'p' + Date.now(), name, notes, price, image });
-      showToast('Perfume agregado');
-    }
-
-    saveData();
-    resetProductForm();
-    renderAdminList();
-    renderCatalog();
-  });
-
-  function resetProductForm() {
-    productForm.reset();
-    editingId = null;
-    document.getElementById('editingId').value = '';
-    document.getElementById('pImageFileName').textContent = 'Sin archivo';
-    document.getElementById('submitProductBtn').textContent = 'Guardar perfume';
-    document.getElementById('cancelEditBtn').style.display = 'none';
-  }
-
-  document.getElementById('cancelEditBtn').addEventListener('click', resetProductForm);
-
   function renderAdminList() {
     const container = document.getElementById('adminList');
-    document.getElementById('adminListCount').textContent = `${products.length} perfume(s) en catálogo`;
+    document.getElementById('adminListCount').textContent = `${products.length} Perfume(s) en tu inventario`;
 
     if(products.length === 0) {
-      container.innerHTML = '<p style="color:var(--stardust-dim); font-size:0.85rem;">No hay perfumes registrados.</p>';
+      container.innerHTML = '<p style="color:var(--stardust-dim);">No tienes perfumes en la lista.</p>';
       return;
     }
 
@@ -1068,8 +550,8 @@
           <div class="meta">${formatCOP(p.price)} — ${escapeHtml(p.notes)}</div>
         </div>
         <div class="row-actions">
-          <button class="icon-btn" data-edit="${p.id}" type="button">Editar</button>
-          <button class="icon-btn danger" data-delete="${p.id}" type="button">Eliminar</button>
+          <button class="icon-btn" data-edit="${p.id}" type="button">✏️ Editar</button>
+          <button class="icon-btn danger" data-delete="${p.id}" type="button">🗑️ Eliminar</button>
         </div>
       </div>
     `).join('');
@@ -1084,8 +566,9 @@
         document.getElementById('pNotes').value = product.notes;
         document.getElementById('pPrice').value = product.price;
         document.getElementById('pImage').value = product.image;
-        document.getElementById('submitProductBtn').textContent = 'Guardar cambios';
+        document.getElementById('submitProductBtn').textContent = '💾 Actualizar Cambios del Perfume';
         document.getElementById('cancelEditBtn').style.display = 'inline-block';
+        document.getElementById('gestor-perfumes').scrollIntoView({ behavior: 'smooth' });
       });
     });
 
@@ -1093,92 +576,67 @@
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-delete');
         products = products.filter(p => p.id !== id);
-        saveData();
+        saveProducts();
         renderAdminList();
         renderCatalog();
-        showToast('Perfume eliminado');
+        showToast('🗑️ Perfume eliminado');
       });
     });
   }
 
-  document.getElementById('saveTextsBtn').addEventListener('click', () => {
-    config.heroEyebrow = document.getElementById('cfgEyebrow').value.trim();
-    config.heroTitle = document.getElementById('cfgTitle').value.trim();
-    config.heroDesc = document.getElementById('cfgDesc').value.trim();
-    config.heroBtnText = document.getElementById('cfgBtnText').value.trim();
-    config.instagramUrl = document.getElementById('cfgInstagram').value.trim();
-    config.footerText = document.getElementById('cfgFooter').value.trim();
+  document.getElementById('pImageFile').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(!file) return;
+    document.getElementById('pImageFileName').textContent = file.name;
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      document.getElementById('pImage').value = evt.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
 
-    saveData();
-    applyConfigToUI();
+  const productForm = document.getElementById('productForm');
+  productForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('pName').value.trim();
+    const notes = document.getElementById('pNotes').value.trim();
+    const price = parseInt(document.getElementById('pPrice').value, 10);
+    const image = document.getElementById('pImage').value.trim();
+
+    if(!name || !notes || !image || isNaN(price)) {
+      showToast('Por favor completa todos los datos del perfume.');
+      return;
+    }
+
+    if(editingId) {
+      products = products.map(p => p.id === editingId ? { ...p, name, notes, price, image } : p);
+      showToast('✨ Perfume actualizado correctamente');
+    } else {
+      products.push({ id: 'p' + Date.now(), name, notes, price, image });
+      showToast('✨ Perfume agregado al catálogo');
+    }
+
+    saveProducts();
+    resetProductForm();
+    renderAdminList();
     renderCatalog();
-    showToast('✨ Textos guardados con éxito');
   });
 
-  document.getElementById('saveBrandingBtn').addEventListener('click', () => {
-    config.headerLogoUrl = document.getElementById('cfgHeaderLogoUrl').value.trim() || defaultConfig.headerLogoUrl;
-    config.footerLogoUrl = document.getElementById('cfgFooterLogoUrl').value.trim() || defaultConfig.footerLogoUrl;
-    config.bgImageUrl = document.getElementById('cfgBgImageUrl').value.trim();
+  function resetProductForm() {
+    productForm.reset();
+    editingId = null;
+    document.getElementById('editingId').value = '';
+    document.getElementById('pImageFileName').textContent = 'Sin archivo seleccionado';
+    document.getElementById('submitProductBtn').textContent = '✨ Guardar y Publicar Perfume';
+    document.getElementById('cancelEditBtn').style.display = 'none';
+  }
 
-    saveData();
-    applyConfigToUI();
-    showToast('✨ Branding e imágenes guardadas');
-  });
-
-  document.getElementById('removeBgBtn').addEventListener('click', () => {
-    config.bgImageUrl = '';
-    document.getElementById('cfgBgImageUrl').value = '';
-    saveData();
-    applyConfigToUI();
-    showToast('Fondo eliminado');
-  });
-
-  document.getElementById('saveFontsBtn').addEventListener('click', () => {
-    config.fontHeading = document.getElementById('fontHeadingSelect').value;
-    config.fontBody = document.getElementById('fontBodySelect').value;
-
-    saveData();
-    applyConfigToUI();
-    showToast('✨ Tipografías aplicadas');
-  });
-
-  document.getElementById('saveThemeBtn').addEventListener('click', () => {
-    config.colGold = document.getElementById('colGold').value;
-    config.colGoldBright = document.getElementById('colGoldBright').value;
-    config.colVoid = document.getElementById('colVoid').value;
-    config.colInk = document.getElementById('colInk').value;
-    config.colStardust = document.getElementById('colStardust').value;
-
-    saveData();
-    applyConfigToUI();
-    showToast('✨ Estilos de color guardados');
-  });
-
-  ['Gold', 'GoldBright', 'Void', 'Ink', 'Stardust'].forEach(key => {
-    const input = document.getElementById('col' + key);
-    const span = document.getElementById('val' + key);
-    if(input && span) {
-      input.addEventListener('input', () => { span.textContent = input.value; });
-    }
-  });
-
-  document.getElementById('resetAllBtn').addEventListener('click', () => {
-    if(window.confirm('¿Seguro que deseas restablecer todos los datos?')) {
-      products = [...defaultProducts];
-      config = { ...defaultConfig };
-      saveData();
-      applyConfigToUI();
-      renderAdminList();
-      renderCatalog();
-      showToast('🔄 Todos los datos fueron restablecidos');
-    }
-  });
-
+  document.getElementById('cancelEditBtn').addEventListener('click', resetProductForm);
   document.getElementById('searchInput').addEventListener('input', renderCatalog);
   document.getElementById('sortSelect').addEventListener('change', renderCatalog);
 
-  loadData();
-  applyConfigToUI();
+  loadProducts();
+  renderAdminList();
   renderCatalog();
 })();
 </script>
