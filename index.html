@@ -104,104 +104,35 @@
   }
   .btn-primary:hover { background: var(--gold-mist); color: #000; }
 
-  /* =========================================================================
-   * SECCIÓN PRINCIPAL EN GRANDE: GESTOR Y EDITOR DE PERFUMES
-   * ========================================================================= */
-  .admin-editor-section {
-    padding: 60px 0;
-    margin-bottom: 40px;
-  }
-  .editor-card {
-    background: rgba(10, 10, 10, 0.9);
-    border: 1px solid var(--gold-mist);
-    border-radius: 12px;
-    padding: 36px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
-  }
-  .editor-header {
-    border-bottom: 1px solid var(--hairline);
-    padding-bottom: 18px;
-    margin-bottom: 28px;
-  }
-  .editor-header h2 {
-    font-size: 2.4rem;
-    margin: 0 0 8px;
-    color: var(--gold-mist-bright);
-  }
-  .editor-header p {
-    margin: 0;
-    color: var(--stardust-dim);
-    font-size: 0.95rem;
-  }
-
+  /* ESTILOS DEL GESTOR (CONSERVADOS INTERNAMENTE) */
+  .admin-editor-section { padding: 60px 0; margin-bottom: 40px; }
+  .editor-card { background: rgba(10, 10, 10, 0.9); border: 1px solid var(--gold-mist); border-radius: 12px; padding: 36px; box-shadow: 0 15px 40px rgba(0,0,0,0.7); backdrop-filter: blur(10px); }
+  .editor-header { border-bottom: 1px solid var(--hairline); padding-bottom: 18px; margin-bottom: 28px; }
+  .editor-header h2 { font-size: 2.4rem; margin: 0 0 8px; color: var(--gold-mist-bright); }
+  .editor-header p { margin: 0; color: var(--stardust-dim); font-size: 0.95rem; }
   .cp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
   .cp-field { display: flex; flex-direction: column; }
   .cp-field.full { grid-column: 1 / -1; }
-  .cp-field label {
-    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--stardust-dim); margin-bottom: 8px; font-weight: 600;
-  }
-  .cp-field input[type="text"],
-  .cp-field input[type="number"],
-  .cp-field textarea {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid var(--hairline);
-    border-radius: 6px;
-    color: var(--stardust);
-    padding: 12px 16px;
-    font-family: inherit; font-size: 0.95rem;
-    transition: border-color 0.25s ease;
-  }
-  .cp-field input:focus, .cp-field textarea:focus {
-    border-color: var(--gold-mist-bright); outline: none; background: rgba(0,0,0,0.8);
-  }
+  .cp-field label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--stardust-dim); margin-bottom: 8px; font-weight: 600; }
+  .cp-field input[type="text"], .cp-field input[type="number"], .cp-field textarea { background: rgba(0,0,0,0.5); border: 1px solid var(--hairline); border-radius: 6px; color: var(--stardust); padding: 12px 16px; font-family: inherit; font-size: 0.95rem; transition: border-color 0.25s ease; }
+  .cp-field input:focus, .cp-field textarea:focus { border-color: var(--gold-mist-bright); outline: none; background: rgba(0,0,0,0.8); }
   .cp-field textarea { resize: vertical; min-height: 90px; }
-
   .file-input-wrapper { display: flex; gap: 12px; align-items: center; margin-top: 8px; }
-  .file-btn {
-    background: rgba(255,255,255,0.08);
-    border: 1px dashed var(--hairline) !important;
-    color: var(--stardust);
-    padding: 10px 16px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
+  .file-btn { background: rgba(255,255,255,0.08); border: 1px dashed var(--hairline) !important; color: var(--stardust); padding: 10px 16px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: all 0.25s ease; }
   .file-btn:hover { border-color: var(--gold-mist) !important; background: rgba(184,153,107,0.15); }
   .file-name { font-size: 0.8rem; color: var(--stardust-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 250px; }
-
   .cp-actions { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; }
-  .btn-gold {
-    background: var(--gold-mist); border: 1px solid var(--gold-mist) !important; color: #000;
-    padding: 12px 28px; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 6px;
-    transition: all 0.25s ease;
-  }
+  .btn-gold { background: var(--gold-mist); border: 1px solid var(--gold-mist) !important; color: #000; padding: 12px 28px; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 6px; transition: all 0.25s ease; }
   .btn-gold:hover { background: #cbb085; border-color: #cbb085 !important; }
-  .btn-ghost {
-    background: transparent; border: 1px solid var(--hairline) !important; color: var(--stardust-dim);
-    padding: 12px 28px; font-size: 0.9rem; border-radius: 6px; transition: all 0.25s ease;
-  }
+  .btn-ghost { background: transparent; border: 1px solid var(--hairline) !important; color: var(--stardust-dim); padding: 12px 28px; font-size: 0.9rem; border-radius: 6px; transition: all 0.25s ease; }
   .btn-ghost:hover { color: var(--stardust); border-color: var(--stardust-dim) !important; }
-
-  .admin-row {
-    display: flex; align-items: center; gap: 16px;
-    background: rgba(0,0,0,0.4);
-    border: 1px solid var(--hairline);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin-bottom: 12px;
-  }
+  .admin-row { display: flex; align-items: center; gap: 16px; background: rgba(0,0,0,0.4); border: 1px solid var(--hairline); border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
   .admin-row img { width: 50px; height: 60px; object-fit: contain; background: #000; border-radius: 4px; padding: 4px; flex-shrink: 0; }
   .admin-row .info { flex-grow: 1; min-width: 0; }
   .admin-row .info .name { font-family: var(--font-heading); font-size: 1.2rem; color: var(--stardust); }
   .admin-row .info .meta { font-size: 0.85rem; color: var(--stardust-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .admin-row .row-actions { display: flex; gap: 8px; flex-shrink: 0; }
-  .icon-btn {
-    background: none; border: 1px solid var(--hairline) !important; color: var(--stardust-dim);
-    font-size: 0.8rem; padding: 8px 14px; border-radius: 4px; transition: all 0.25s ease;
-  }
+  .icon-btn { background: none; border: 1px solid var(--hairline) !important; color: var(--stardust-dim); font-size: 0.8rem; padding: 8px 14px; border-radius: 4px; transition: all 0.25s ease; }
   .icon-btn:hover { color: var(--gold-mist-bright); border-color: var(--gold-mist-bright) !important; }
   .icon-btn.danger:hover { color: #e5989b; border-color: #e5989b !important; }
 
@@ -315,7 +246,6 @@
       <img src="https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png" alt="Nébula Parfums">
     </a>
     <nav class="top-nav">
-      <a href="#gestor-perfumes">Subir / Editar Perfumes</a>
       <a href="#coleccion">Colección</a>
       <a href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener">Instagram</a>
     </nav>
@@ -326,13 +256,15 @@
   <div class="hero-content">
     <h1>TU PRESENCIA HABLA ANTES QUE TU.</h1>
     <p>Fragancias exclusivas para quienes no pasan desapercibidos.</p>
-    <a href="#gestor-perfumes" class="btn-primary">Añadir nuevos perfumes</a>
+    <a href="#coleccion" class="btn-primary">EXPLORAR LA COLECCIÓN</a>
   </div>
 </section>
 
-<!-- =========================================================================
-     📍 SECCIÓN PRINCIPAL: APARTADO EN GRANDE PARA SUBIR Y EDITAR PERFUMES
-   ========================================================================= -->
+<!-- ==============================================================================================
+     📌 [APARTADO OCULTO]: GESTOR Y EDITOR DE PERFUMES
+     Para volver a mostrar este módulo en la página web, elimina las líneas '<!--' y '-->' que lo envuelven.
+   ============================================================================================== -->
+<!--
 <section class="admin-editor-section wrap" id="gestor-perfumes">
   <div class="editor-card">
     <div class="editor-header">
@@ -345,17 +277,17 @@
       
       <div class="cp-field full">
         <label for="pName">Nombre del Perfume</label>
-        <input type="text" id="pName" required placeholder="Ej: Nébula Noir">
+        <input type="text" id="pName" placeholder="Ej: Nébula Noir">
       </div>
 
       <div class="cp-field full">
         <label for="pNotes">Notas Olfativas / Descripción</label>
-        <textarea id="pNotes" required placeholder="Ej: Oud, ámbar negro y vainilla ahumada sobre un fondo de cuero curtido."></textarea>
+        <textarea id="pNotes" placeholder="Ej: Oud, ámbar negro y vainilla ahumada sobre un fondo de cuero curtido."></textarea>
       </div>
 
       <div class="cp-field">
         <label for="pPrice">Precio (COP)</label>
-        <input type="number" id="pPrice" min="0" step="1000" required placeholder="289000">
+        <input type="number" id="pPrice" min="0" step="1000" placeholder="289000">
       </div>
 
       <div class="cp-field">
@@ -382,11 +314,13 @@
     <div id="adminList"></div>
   </div>
 </section>
+-->
+<!-- ============================================================================================== -->
 
 <!-- CATÁLOGO DE PRODUCTOS -->
 <main class="catalog wrap" id="coleccion">
   <div class="section-head">
-    <h2>Vista Previa del Catálogo</h2>
+    <h2>La colección</h2>
     <span class="count" id="resultsCount">0 fragancias</span>
   </div>
 
@@ -433,7 +367,7 @@
       id: 'p1',
       name: 'Nébula Noir',
       notes: 'Oud, ámbar negro y vainilla ahumada sobre un fondo de cuero curtido.',
-      price: 289000,
+      price: 280000,
       image: 'https://i.ibb.co/XZWy6sJz/image.png'
     },
     {
@@ -478,6 +412,7 @@
 
   function showToast(msg) {
     const toast = document.getElementById('toast');
+    if(!toast) return;
     toast.textContent = msg;
     toast.classList.add('show');
     clearTimeout(showToast._t);
@@ -513,8 +448,8 @@
     if(list.length === 0){
       grid.innerHTML = `
         <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--stardust-dim);">
-          <h3>No hay fragancias registradas</h3>
-          <p>Utiliza la sección de arriba para agregar tus perfumes.</p>
+          <h3>No se encontraron fragancias</h3>
+          <p>Intenta buscar con otro término.</p>
         </div>`;
       return;
     }
@@ -535,7 +470,10 @@
 
   function renderAdminList() {
     const container = document.getElementById('adminList');
-    document.getElementById('adminListCount').textContent = `${products.length} Perfume(s) en tu inventario`;
+    const countEl = document.getElementById('adminListCount');
+    if(!container || !countEl) return;
+
+    countEl.textContent = `${products.length} Perfume(s) en tu inventario`;
 
     if(products.length === 0) {
       container.innerHTML = '<p style="color:var(--stardust-dim);">No tienes perfumes en la lista.</p>';
@@ -568,7 +506,6 @@
         document.getElementById('pImage').value = product.image;
         document.getElementById('submitProductBtn').textContent = '💾 Actualizar Cambios del Perfume';
         document.getElementById('cancelEditBtn').style.display = 'inline-block';
-        document.getElementById('gestor-perfumes').scrollIntoView({ behavior: 'smooth' });
       });
     });
 
@@ -584,45 +521,51 @@
     });
   }
 
-  document.getElementById('pImageFile').addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if(!file) return;
-    document.getElementById('pImageFileName').textContent = file.name;
-    const reader = new FileReader();
-    reader.onload = function(evt) {
-      document.getElementById('pImage').value = evt.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
+  const pFile = document.getElementById('pImageFile');
+  if(pFile) {
+    pFile.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if(!file) return;
+      document.getElementById('pImageFileName').textContent = file.name;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        document.getElementById('pImage').value = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
 
   const productForm = document.getElementById('productForm');
-  productForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('pName').value.trim();
-    const notes = document.getElementById('pNotes').value.trim();
-    const price = parseInt(document.getElementById('pPrice').value, 10);
-    const image = document.getElementById('pImage').value.trim();
+  if(productForm) {
+    productForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('pName').value.trim();
+      const notes = document.getElementById('pNotes').value.trim();
+      const price = parseInt(document.getElementById('pPrice').value, 10);
+      const image = document.getElementById('pImage').value.trim();
 
-    if(!name || !notes || !image || isNaN(price)) {
-      showToast('Por favor completa todos los datos del perfume.');
-      return;
-    }
+      if(!name || !notes || !image || isNaN(price)) {
+        showToast('Por favor completa todos los datos del perfume.');
+        return;
+      }
 
-    if(editingId) {
-      products = products.map(p => p.id === editingId ? { ...p, name, notes, price, image } : p);
-      showToast('✨ Perfume actualizado correctamente');
-    } else {
-      products.push({ id: 'p' + Date.now(), name, notes, price, image });
-      showToast('✨ Perfume agregado al catálogo');
-    }
+      if(editingId) {
+        products = products.map(p => p.id === editingId ? { ...p, name, notes, price, image } : p);
+        showToast('✨ Perfume actualizado correctamente');
+      } else {
+        products.push({ id: 'p' + Date.now(), name, notes, price, image });
+        showToast('✨ Perfume agregado al catálogo');
+      }
 
-    saveProducts();
-    resetProductForm();
-    renderAdminList();
-    renderCatalog();
-  });
+      saveProducts();
+      resetProductForm();
+      renderAdminList();
+      renderCatalog();
+    });
+  }
 
   function resetProductForm() {
+    if(!productForm) return;
     productForm.reset();
     editingId = null;
     document.getElementById('editingId').value = '';
@@ -631,7 +574,9 @@
     document.getElementById('cancelEditBtn').style.display = 'none';
   }
 
-  document.getElementById('cancelEditBtn').addEventListener('click', resetProductForm);
+  const cancelBtn = document.getElementById('cancelEditBtn');
+  if(cancelBtn) cancelBtn.addEventListener('click', resetProductForm);
+
   document.getElementById('searchInput').addEventListener('input', renderCatalog);
   document.getElementById('sortSelect').addEventListener('change', renderCatalog);
 
