@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title id="siteTitle">Nébula Parfums</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/jZ5y4GpK/NE-BULA-BLANCO.png">
+<meta name="description" content="Nébula Parfums — TU PRESENCIA HABLA ANTES QUE TÚ.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --void: #0a0a0a;
+    --ink: #0a0a0a;
+    --stardust: #f5f5f7;
+    --stardust-dim: #a1a1a6;
+    --gold-mist: #b8996b;
+    --gold-mist-bright: #d4af76;
+    --hairline: rgba(184, 153, 107, 0.35);
+    --hairline-soft: rgba(255, 255, 255, 0.08);
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Manrope', sans-serif;
+    --bg-image-url: url('https://i.ibb.co/3yKHhXX4/Perfumes-Nebula-Fondo.png');
+    --max-w: 1200px;
+  }
+
+  * { 
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+  }
+
+  html { 
+    scroll-behavior: smooth; 
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--void);
+    background-image: var(--bg-image-url);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--stardust);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  a { color: inherit; text-decoration: none !important; }
+  img { max-width: 100%; height: auto; display: block; }
+
+  .wrap { 
+    max-width: var(--max-w); 
+    margin: 0 auto; 
+    padding: 0 24px; 
+    width: 100%;
+  }
+
+  /* ----------------------------------------------------
+     INTRODUCCIÓN CINEMATOGRÁFICA
+  ---------------------------------------------------- */
+  #nebula-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #020202;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #nebula-intro.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #nebula-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .intro-viewport {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.97);
+    animation: slowCamera 3.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .intro-logo-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-logo-wrapper {
+    position: relative;
+    width: 140px;
+    height: auto;
+    max-width: 50vw;
+    opacity: 0;
+    animation: revealLogo 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
+  }
+
+  .intro-logo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .intro-brand-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: #f5f5f7;
+    text-transform: uppercase;
+    margin-top: 18px;
+    opacity: 0;
+    animation: revealText 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s;
+  }
+
+  .intro-brand-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(0.55rem, 2vw, 0.65rem);
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    color: var(--gold-mist);
+    text-transform: uppercase;
+    margin-top: 6px;
+    opacity: 0;
+    animation: revealText 1s ease-out forwards 0.9s;
+  }
+
+  @keyframes slowCamera {
+    0% { transform: scale(0.97); }
+    100% { transform: scale(1.02); }
+  }
+  @keyframes revealLogo {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes revealText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  /* ----------------------------------------------------
+     HEADER DE EXTREMO A EXTREMO (RESPONSIVE)
+  ---------------------------------------------------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+  }
+
+  .header-inner-wide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    width: 100%;
+  }
+
+  .logo-link img { 
+    height: 38px; 
+    width: auto; 
+    object-fit: contain; 
+  }
+
+  nav.top-nav { 
+    display: flex; 
+    align-items: center; 
+    gap: 28px; 
+  }
+
+  nav.top-nav a {
+    color: #ffffff !important;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  nav.top-nav a:hover { color: var(--gold-mist) !important; }
+
+  /* ----------------------------------------------------
+     HERO SECTION
+  ---------------------------------------------------- */
+  .hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 5.2rem);
+    line-height: 1.1;
+    margin: 0 0 20px;
+    max-width: 14ch;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+  }
+
+  .hero p {
+    color: #e1e1e1 !important;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    max-width: 48ch;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  .btn-original {
+    display: inline-block;
+    border: 1px solid var(--gold-mist);
+    color: var(--gold-mist) !important;
+    padding: 14px 32px;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-align: center;
+  }
+
+  .btn-original:hover {
+    border-color: #ffffff;
+    color: #ffffff !important;
+    background: rgba(184, 153, 107, 0.2);
+    box-shadow: 0 0 20px rgba(184, 153, 107, 0.25);
+  }
+
+  /* ----------------------------------------------------
+     BANDA DE MARCAS
+  ---------------------------------------------------- */
+  .brands-banner {
+    width: 100%;
+    background: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(184, 153, 107, 0.2);
+    border-bottom: 1px solid rgba(184, 153, 107, 0.2);
+    padding: 36px 0;
+    margin-bottom: 60px;
+  }
+
+  .brands-banner-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .brands-banner-title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.15;
+  }
+
+  .brands-banner-logos {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .brand-logo-img {
+    height: 45px;
+    max-height: 55px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .brand-logo-img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(184, 153, 107, 0.85));
+  }
+
+  /* ----------------------------------------------------
+     SECCIONES EDITORIALES Y RESPONSIVE
+  ---------------------------------------------------- */
+  .editorial-section {
+    padding: 70px 0;
+    position: relative;
+  }
+
+  .gold-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-mist);
+    margin: 0 auto 24px;
+    opacity: 0.7;
+  }
+
+  /* 1. NUESTRA ESENCIA */
+  .esencia-container {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .esencia-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-mist);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .esencia-title {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    margin: 0 0 20px;
+    color: #ffffff;
+    line-height: 1.15;
+  }
+
+  .esencia-text {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-weight: 300;
+    line-height: 1.85;
+    color: #d8d8d8;
+  }
+
+  /* 2. EL COMIENZO DE NÉBULA */
+  .comienzo-card {
+    background: rgba(15, 15, 15, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--hairline-soft);
+    border-left: 2px solid var(--gold-mist);
+    padding: 44px 50px;
+    border-radius: 4px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .comienzo-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0 0 20px;
+    color: #ffffff;
+  }
+
+  .comienzo-text {
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    font-weight: 300;
+    line-height: 1.8;
+    color: #cccccc;
+    margin-bottom: 16px;
+  }
+
+  .comienzo-text:last-child { margin-bottom: 0; }
+
+  /* 3. ¿POR QUÉ NÉBULA? */
+  .porque-title {
+    text-align: center;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    margin: 0 0 50px;
+    color: #ffffff;
+  }
+
+  .porque-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .porque-item {
+    padding: 28px 20px;
+    background: rgba(10, 10, 10, 0.4);
+    border-top: 1px solid var(--hairline);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .porque-item:hover {
+    background: rgba(20, 20, 20, 0.6);
+    transform: translateY(-4px);
+  }
+
+  .porque-num {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--gold-mist);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .porque-item h3 {
+    font-size: 1.6rem;
+    margin: 0 0 10px;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+  }
+
+  .porque-item p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #b5b5b5;
+    line-height: 1.6;
+  }
+
+  /* 4. ENCUENTRA TU AROMA */
+  .aroma-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .aroma-title {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    margin: 0 0 8px;
+    color: #ffffff;
+  }
+
+  .aroma-subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #a1a1a6;
+  }
+
+  .aroma-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .aroma-card {
+    background: rgba(12, 12, 12, 0.7);
+    border: 1px solid var(--hairline-soft);
+    padding: 36px 24px;
+    text-align: center;
+    border-radius: 4px;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+  }
+
+  .aroma-card:hover {
+    border-color: var(--gold-mist);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(184, 153, 107, 0.15);
+    background: rgba(18, 18, 18, 0.85);
+  }
+
+  .aroma-card h3 {
+    font-size: 1.8rem;
+    margin: 0 0 10px;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+  }
+
+  .aroma-card p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #aaaaaa;
+    line-height: 1.6;
+  }
+
+  /* 5. NUESTRO COMPROMISO */
+  .compromiso-title {
+    text-align: center;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    margin: 0 0 40px;
+    color: #ffffff;
+  }
+
+  .compromiso-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .compromiso-box {
+    text-align: center;
+    padding: 24px 16px;
+    border-bottom: 1px solid var(--hairline-soft);
+    transition: border-color 0.3s ease;
+  }
+
+  .compromiso-box:hover {
+    border-color: var(--gold-mist);
+  }
+
+  .compromiso-box h3 {
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+    color: var(--gold-mist);
+    letter-spacing: 0.08em;
+  }
+
+  .compromiso-box p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #cccccc;
+    line-height: 1.6;
+  }
+
+  /* ----------------------------------------------------
+     CATÁLOGO DE PRODUCTOS
+  ---------------------------------------------------- */
+  .catalog {
+    padding: 70px 0 90px;
+    border-top: 1px solid var(--hairline-soft);
+  }
+
+  .catalog-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .catalog-title {
+    font-size: clamp(2.3rem, 5vw, 3.8rem);
+    color: #ffffff;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .section-head {
+    display: flex; 
+    align-items: flex-end; 
+    justify-content: space-between;
+    gap: 16px; 
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 16px; 
+    margin-bottom: 28px;
+  }
+
+  .section-head h3 { font-size: 1.6rem; margin: 0; color: #ffffff; }
+  .section-head .count { color: #d1d1d1 !important; font-size: 0.85rem; }
+
+  .controls {
+    display: flex; 
+    gap: 20px; 
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+
+  .field { flex: 1 1 240px; position: relative; }
+  .field label { color: #ffffff !important; display: block; margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 0.05em; }
+  .field input, .field select {
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid var(--hairline);
+    color: var(--stardust);
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 12px 14px;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    min-height: 44px;
+  }
+
+  .field input:focus, .field select:focus {
+    border-color: var(--gold-mist-bright);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 20px;
+    display: flex; 
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold-mist);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+  }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: rgba(255,255,255,0.02);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+  }
+
+  .card-img img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+  .card h3 { font-size: 1.25rem; margin: 0 0 6px; color: var(--stardust); font-weight: 400; }
+  .card .notes { color: #d1d1d1 !important; font-size: 0.8rem; line-height: 1.5; }
+  .card .price {
+    font-family: var(--font-heading);
+    font-size: 1.35rem; color: var(--gold-mist-bright);
+    margin: 12px 0 16px; font-weight: 600;
+  }
+
+  .btn-buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--hairline) !important;
+    color: var(--stardust);
+    padding: 12px 16px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    margin-top: auto;
+    min-height: 44px;
+  }
+
+  .btn-buy:hover {
+    border-color: var(--gold-mist-bright) !important;
+    color: var(--gold-mist-bright);
+    background: rgba(184,153,107,0.12);
+  }
+
+  /* ----------------------------------------------------
+     CIERRE DE MARCA CINEMATOGRÁFICO
+  ---------------------------------------------------- */
+  .brand-closure {
+    position: relative;
+    padding: 110px 0 100px;
+    background: #020202;
+    overflow: hidden;
+    text-align: center;
+    border-top: 1px solid rgba(184, 153, 107, 0.25);
+  }
+
+  .brand-closure-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba(184, 153, 107, 0.08) 0%, rgba(0,0,0,0.95) 70%);
+    pointer-events: none;
+  }
+
+  .brand-closure-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .closure-main-text {
+    font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+    line-height: 1.15;
+    margin: 0 0 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+  }
+
+  .closure-sub-text {
+    font-size: clamp(0.85rem, 2vw, 1.05rem);
+    color: var(--gold-mist);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--hairline-soft);
+    padding: 36px 0;
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .footer-inner {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  .footer-inner img { height: 30px; width: auto; }
+  .footer-copy { color: #888888 !important; font-size: 0.8rem; text-align: center; }
+
+  /* ANIMACIONES DE SCROLL */
+  .fade-in-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .fade-in-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ----------------------------------------------------
+     MEDIA QUERIES (DISPOSITIVOS MÓVILES Y TABLETS)
+  ---------------------------------------------------- */
+  @media (max-width: 768px) {
+    .header-inner-wide {
+      padding: 12px 18px;
+    }
+
+    .logo-link img {
+      height: 30px;
+    }
+
+    nav.top-nav {
+      gap: 16px;
+    }
+
+    nav.top-nav a {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero {
+      padding: 50px 0 40px;
+      min-height: auto;
+    }
+
+    .brands-banner {
+      padding: 28px 0;
+      margin-bottom: 40px;
+    }
+
+    .brands-banner-inner {
+      justify-content: center;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .brands-banner-logos {
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .brand-logo-img {
+      height: 35px;
+    }
+
+    .editorial-section {
+      padding: 46px 0;
+    }
+
+    .comienzo-card {
+      padding: 28px 20px;
+      border-left-width: 2px;
+    }
+
+    .porque-grid, 
+    .aroma-grid, 
+    .compromiso-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .porque-item, 
+    .aroma-card, 
+    .compromiso-box {
+      padding: 24px 18px;
+    }
+
+    .controls {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .field {
+      flex: 1 1 100%;
+    }
+
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .brand-closure {
+      padding: 80px 0 70px;
+    }
+
+    .btn-original {
+      width: 100%;
+      max-width: 320px;
+      padding: 14px 20px;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- INTRODUCCIÓN CINEMATOGRÁFICA -->
+<div id="nebula-intro">
+  <canvas id="nebula-canvas"></canvas>
+  <div class="intro-viewport">
+    <div class="intro-logo-container">
+      <div class="intro-logo-wrapper">
+        <img class="intro-logo-img" src="https://i.ibb.co/jZ5y4GpK/NE-BULA-BLANCO.png" alt="Nébula Parfums" loading="eager" decoding="async">
+      </div>
+      <div class="intro-brand-title">NÉBULA PARFUMS</div>
+      <div class="intro-brand-subtitle">TU PRESENCIA HABLA ANTES QUE TÚ</div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER Y NAVEGACIÓN A LOS EXTREMOS -->
+<header class="fade-in-element">
+  <div class="header-inner-wide">
+    <a href="#top" class="logo-link">
+      <img src="https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png" alt="Nébula Parfums" loading="eager" decoding="async">
+    </a>
+    <nav class="top-nav">
+      <a href="#esencia">Esencia</a>
+      <a href="#coleccion">Colección</a>
+      <a href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero" id="top">
+  <div class="hero-content">
+    <h1 class="fade-in-element">TU PRESENCIA HABLA ANTES QUE TÚ.</h1>
+    <p class="fade-in-element">Fragancias exclusivas para quienes no pasan desapercibidos.</p>
+    <a href="#coleccion" class="btn-original fade-in-element">EXPLORAR LA COLECCIÓN</a>
+  </div>
+</section>
+
+<!-- BANDA DE MARCAS DISPONIBLES -->
+<section class="brands-banner fade-in-element">
+  <div class="brands-banner-inner">
+    <h2 class="brands-banner-title">Todas Nuestras<br>Marcas Disponibles...</h2>
+    <div class="brands-banner-logos">
+      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/HphH44sT/image-removebg-preview-3.png" alt="Afnan" loading="eager" decoding="async">
+      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/hbCGZM0/image-removebg-preview.png" alt="Lattafa" loading="eager" decoding="async">
+      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/W4Vr2c5g/image-removebg-preview-4.png" alt="Jean Paul Gaultier" loading="eager" decoding="async">
+      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/vb7WPnG/image-removebg-preview-1.png" alt="Louis Vuitton" loading="eager" decoding="async">
+      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/MDYNYWQg/image-removebg-preview-2.png" alt="YSL" loading="eager" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- 1. SECCIÓN "NUESTRA ESENCIA" -->
+<section class="editorial-section wrap" id="esencia">
+  <div class="esencia-container fade-in-element">
+    <span class="esencia-subtitle">FILOSOFÍA</span>
+    <h2 class="esencia-title">MÁS QUE UNA FRAGANCIA</h2>
+    <div class="gold-divider"></div>
+    <p class="esencia-text">
+      En NÉBULA PARFUMS creemos que un perfume es más que un aroma. Es parte de tu identidad, de tu estilo y de esos momentos que permanecen en la memoria.
+      <br><br>
+      Seleccionamos fragancias pensadas para quienes quieren expresar su personalidad sin necesidad de decir una palabra.
+    </p>
+  </div>
+</section>
+
+<!-- 2. SECCIÓN "EL COMIENZO DE NÉBULA" -->
+<section class="editorial-section wrap">
+  <div class="comienzo-card fade-in-element">
+    <h2 class="comienzo-title">EL COMIENZO DE NÉBULA</h2>
+    <p class="comienzo-text">
+      NÉBULA PARFUMS nace con una idea sencilla: hacer de la perfumería una experiencia.
+    </p>
+    <p class="comienzo-text">
+      Creamos un espacio donde encontrar fragancias reconocidas, descubrir nuevos aromas y elegir aquello que realmente representa tu estilo.
+    </p>
+    <p class="comienzo-text">
+      Porque cada persona tiene una presencia única. NÉBULA existe para ayudarte a encontrar la fragancia que la acompañe.
+    </p>
+  </div>
+</section>
+
+<!-- 3. SECCIÓN "¿POR QUÉ NÉBULA?" -->
+<section class="editorial-section wrap">
+  <h2 class="porque-title fade-in-element">¿POR QUÉ NÉBULA?</h2>
+  <div class="porque-grid">
+    <div class="porque-item fade-in-element">
+      <span class="porque-num">I</span>
+      <h3>PRESENCIA</h3>
+      <p>Una fragancia puede hablar por ti antes de que lo hagas tú.</p>
+    </div>
+    <div class="porque-item fade-in-element">
+      <span class="porque-num">II</span>
+      <h3>IDENTIDAD</h3>
+      <p>Aromas que acompañan tu personalidad, tu estilo y tus momentos.</p>
+    </div>
+    <div class="porque-item fade-in-element">
+      <span class="porque-num">III</span>
+      <h3>MEMORIA</h3>
+      <p>Porque algunas personas se olvidan. Algunos aromas no.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SECCIÓN "ENCUENTRA TU AROMA" -->
+<section class="editorial-section wrap">
+  <div class="aroma-header fade-in-element">
+    <h2 class="aroma-title">ENCUENTRA TU AROMA</h2>
+    <p class="aroma-subtitle">Descubre una fragancia que encaje contigo.</p>
+  </div>
+  <div class="aroma-grid">
+    <div class="aroma-card fade-in-element">
+      <h3>INTENSO</h3>
+      <p>Para quienes buscan presencia y proyección.</p>
+    </div>
+    <div class="aroma-card fade-in-element">
+      <h3>ELEGANTE</h3>
+      <p>Para ocasiones especiales y estilos sofisticados.</p>
+    </div>
+    <div class="aroma-card fade-in-element">
+      <h3>FRESCO</h3>
+      <p>Para quienes prefieren algo ligero y versátil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. SECCIÓN "NUESTRO COMPROMISO" -->
+<section class="editorial-section wrap">
+  <h2 class="compromiso-title fade-in-element">NUESTRO COMPROMISO</h2>
+  <div class="compromiso-grid">
+    <div class="compromiso-box fade-in-element">
+      <h3>SELECCIÓN</h3>
+      <p>Fragancias cuidadosamente seleccionadas.</p>
+    </div>
+    <div class="compromiso-box fade-in-element">
+      <h3>ATENCIÓN</h3>
+      <p>Asesoría para ayudarte a encontrar lo que buscas.</p>
+    </div>
+    <div class="compromiso-box fade-in-element">
+      <h3>EXPERIENCIA</h3>
+      <p>Queremos que comprar una fragancia sea parte de la experiencia, no simplemente una transacción.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CATÁLOGO DE PRODUCTOS MEJORADO -->
+<main class="catalog wrap" id="coleccion">
+  <div class="catalog-header fade-in-element">
+    <h2 class="catalog-title">LA COLECCIÓN</h2>
+    <div class="gold-divider"></div>
+  </div>
+
+  <div class="section-head fade-in-element">
+    <h3>Explorar Perfumes</h3>
+    <span class="count" id="resultsCount">0 fragancias</span>
+  </div>
+
+  <div class="controls fade-in-element">
+    <div class="field">
+      <label for="searchInput">Buscar por nombre o notas</label>
+      <input type="text" id="searchInput" placeholder="Ej: Afnan, Lataffa, Ahli..." autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="sortSelect">Ordenar por</label>
+      <select id="sortSelect">
+        <option value="default">Recomendados</option>
+        <option value="price-desc">Precio: de mayor a menor</option>
+        <option value="price-asc">Precio: de menor a mayor</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid" id="productGrid"></div>
+</main>
+
+<!-- 7. CIERRE DE MARCA CINEMATOGRÁFICO -->
+<section class="brand-closure">
+  <div class="brand-closure-bg"></div>
+  <div class="brand-closure-content fade-in-element">
+    <h2 class="closure-main-text">TU AROMA.<br>TU IDENTIDAD.<br>TU PRESENCIA.</h2>
+    <p class="closure-sub-text">TU PRESENCIA HABLA ANTES QUE TÚ.</p>
+    <a href="#coleccion" class="btn-original">EXPLORAR LA COLECCIÓN</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <a href="#top" class="logo-link">
+        <img src="https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png" alt="Nébula Parfums" loading="eager" decoding="async">
+      </a>
+      <a href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener">@nebulaparfums</a>
+    </div>
+    <p class="footer-copy">© 2026 Nébula Parfums. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ----------------------------------------------------
+     1. CANVAS E INTRO
+  ---------------------------------------------------- */
+  const canvas = document.getElementById('nebula-canvas');
+  const ctx = canvas.getContext('2d');
+
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const particleCount = 20;
+  const particles = [];
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 1.5 + 0.3;
+      this.vx = (Math.random() - 0.5) * 0.2;
+      this.vy = (Math.random() - 0.5) * 0.2;
+      this.alpha = 0;
+      this.maxAlpha = Math.random() * 0.35 + 0.1;
+      this.fadeIn = true;
+      this.life = 0;
+      this.maxLife = Math.random() * 120 + 80;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.life++;
+      if (this.fadeIn) {
+        this.alpha += 0.01;
+        if (this.alpha >= this.maxAlpha) this.fadeIn = false;
+      } else if (this.life > this.maxLife - 40) {
+        this.alpha -= 0.01;
+      }
+      if (this.life >= this.maxLife || this.alpha <= 0) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212, 175, 118, ${Math.max(0, this.alpha)})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+  function renderAtmosphere() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(renderAtmosphere);
+  }
+  renderAtmosphere();
+
+  /* ----------------------------------------------------
+     2. TIENDA Y RENDERIZADO
+  ---------------------------------------------------- */
+  const STORAGE_KEY_PRODUCTS = 'nebulaParfums_products_v4';
+
+  const defaultProducts = [
+    {
+      id: 'p1',
+      name: 'Afnan 9 PM Elixir',
+      notes: 'Una fragancia masculina de perfil especiado y oriental, de la casa Afnan.',
+      price: 280000,
+      image: 'https://i.ibb.co/XZWy6sJz/image.png'
+    },
+    {
+      id: 'p2',
+      name: 'Jean Paul Gaultier Le Male Le Parfum',
+      notes: 'Una fragancia masculina de perfil amaderado y especiado, de Jean Paul Gaultier.',
+      price: 530000,
+      image: 'https://i.ibb.co/sJdvHJRP/image.png'
+    },
+    {
+      id: 'p3',
+      name: 'Carolina Herrera Good Girl Blush Elixir',
+      notes: 'Una fragancia femenina de perfil cítrico y floral, de Carolina Herrera.',
+      price: 610000,
+      image: 'https://i.ibb.co/NnZTMBGc/image.png'
+    },
+    {
+      id: 'p4',
+      name: 'Afnan 9PM Eau de Parfum',
+      notes: 'Una fragancia masculina de perfil amaderado y floral, de la casa Afnan.',
+      price: 230000,
+      image: 'https://i.ibb.co/RTPhBHnR/image.png'
+    },
+    {
+      id: 'p5',
+      name: 'Afnan 9 PM Pour Femme EDP',
+      notes: 'Una fragancia femenina de perfil floral y dulce, de la casa Afnan.',
+      price: 250000,
+      image: 'https://i.ibb.co/VYZjQ1Cn/image.png'
+    },
+    {
+      id: 'p6',
+      name: 'Afnan 9PM Rebel Eau de Parfum',
+      notes: 'Una fragancia unisex de perfil frutal y cítrico, de la casa Afnan.',
+      price: 280000,
+      image: 'https://i.ibb.co/MxDWTmKV/image.png'
+    },
+  ];
+
+  let products = [];
+
+  const formatCOP = (value) => new Intl.NumberFormat('es-CO', {
+    style: 'currency', currency: 'COP', maximumFractionDigits: 0
+  }).format(value);
+
+  function loadProducts() {
+    try {
+      const storedProducts = localStorage.getItem(STORAGE_KEY_PRODUCTS);
+      products = storedProducts ? JSON.parse(storedProducts) : [...defaultProducts];
+    } catch(e) {
+      products = [...defaultProducts];
+    }
+  }
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, s => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+    }[s]));
+  }
+
+  function getFilteredProducts() {
+    const query = document.getElementById('searchInput').value.trim().toLowerCase();
+    const sortValue = document.getElementById('sortSelect').value;
+
+    let list = products.filter(p =>
+      p.name.toLowerCase().includes(query) || p.notes.toLowerCase().includes(query)
+    );
+
+    if(sortValue === 'price-desc') list.sort((a,b)=> b.price - a.price);
+    else if(sortValue === 'price-asc') list.sort((a,b)=> a.price - b.price);
+
+    return list;
+  }
+
+  function renderCatalog() {
+    const grid = document.getElementById('productGrid');
+    const list = getFilteredProducts();
+    const countLabel = document.getElementById('resultsCount');
+    countLabel.textContent = list.length + (list.length === 1 ? ' fragancia' : ' fragancias');
+
+    if(list.length === 0){
+      grid.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--stardust-dim);">
+          <h3>No se encontraron fragancias</h3>
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = list.map(p => `
+      <article class="card fade-in-element">
+        <div class="card-img">
+          <img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.name)}" loading="lazy" decoding="async">
+        </div>
+        <h3>${escapeHtml(p.name)}</h3>
+        <p class="notes">${escapeHtml(p.notes)}</p>
+        <p class="price">${formatCOP(p.price)}</p>
+        <a class="btn-buy" href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener">Comprar</a>
+      </article>
+    `).join('');
+  }
+
+  /* ----------------------------------------------------
+     3. INTERSECTION OBSERVER ANIMACIONES
+  ---------------------------------------------------- */
+  function initScrollObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: "0px 0px -30px 0px"
+    });
+
+    document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
+  }
+
+  document.getElementById('searchInput').addEventListener('input', () => {
+    renderCatalog();
+    initScrollObserver();
+  });
+  document.getElementById('sortSelect').addEventListener('change', () => {
+    renderCatalog();
+    initScrollObserver();
+  });
+
+  loadProducts();
+  renderCatalog();
+
+  setTimeout(() => {
+    const introElement = document.getElementById('nebula-intro');
+    if (introElement) {
+      introElement.classList.add('fade-out');
+      initScrollObserver();
+      setTimeout(() => {
+        introElement.style.display = 'none';
+      }, 800);
+    }
+  }, 2800);
+
+})();
+</script>
+</body>
+</html>
