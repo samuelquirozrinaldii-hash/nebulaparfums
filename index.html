@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="siteTitle">Nébula Parfums</title>
 <link rel="icon" type="image/png" href="https://i.ibb.co/jZ5y4GpK/NE-BULA-BLANCO.png">
-<meta name="description" content="Nébula Parfums — TU PRESENCIA HABLA ANTES QUE TÚ.">
+<meta name="description" content="Nébula Parfums — TU PRESENCIA HABLA ANTES QUE TU.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,17 +15,17 @@
 
 <style id="themeVars">
   :root {
-    --void: #000000;
-    --void-deep: #08070c;
-    --ink: #0f0d16;
-    --stardust: #e8e3d8;
-    --stardust-dim: #a89fb0;
+    --void: #0a0a0a;
+    --void-deep: #0a0a0a;
+    --ink: #0a0a0a;
+    --stardust: #f5f5f7;
+    --stardust-dim: #a1a1a6;
     --gold-mist: #b8996b;
-    --gold-mist-bright: #d4b483;
-    --hairline: rgba(184,153,107,0.22);
+    --gold-mist-bright: #b8996b;
+    --hairline: rgba(184, 153, 107, 0.35);
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Manrope', sans-serif;
-    --bg-image-url: none;
+    --bg-image-url: url('https://i.ibb.co/3yKHhXX4/Perfumes-Nebula-Fondo.png');
     --max-w: 1180px;
   }
 
@@ -97,7 +97,7 @@
   .hero-bg { display: none; }
   .stars { display: none; }
   .hero-content { position: relative; z-index: 2; max-width: var(--max-w); margin: 0 auto; padding: 0 28px; width: 100%; }
-  .hero-eyebrow { color: #ffffff !important; }
+  .hero-eyebrow { color: #ffffff !important; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; }
   .hero h1 {
     font-size: clamp(2.5rem, 5.5vw, 4.4rem);
     line-height: 1.08;
@@ -105,7 +105,7 @@
     max-width: 16ch;
     color: var(--stardust);
   }
-  .hero p { color: #d1d1d1 !important; }
+  .hero p { color: #d1d1d1 !important; font-size: 1.1rem; max-width: 50ch; margin-bottom: 28px; }
 
   .btn-primary {
     display: inline-block;
@@ -140,7 +140,7 @@
   .field label { color: #ffffff !important; }
   .field input, .field select {
     width: 100%;
-    background: rgba(255,255,255,0.03);
+    background: rgba(0,0,0,0.5);
     border: 1px solid var(--hairline);
     color: var(--stardust);
     font-family: inherit;
@@ -151,8 +151,11 @@
   }
   .field select { cursor: pointer; }
   .field select option { background: var(--ink); color: var(--stardust); }
-  .field input:focus, .field select:focus { border-color: var(--gold-mist-bright); background: rgba(255,255,255,0.06); outline: none; }
+  .field input:focus, .field select:focus { border-color: var(--gold-mist-bright); background: rgba(0,0,0,0.7); outline: none; }
 
+  /* =========================================================================
+   * 📍 CONTENEDOR VISUAL DONDE SE RENDERIZAN Y MUESTRAN LOS PERFUMES
+   * ========================================================================= */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -218,7 +221,7 @@
     border-top: 1px solid var(--hairline);
     padding: 50px 0 34px;
     margin-top: 60px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.5);
   }
   .footer-inner {
     display: flex; justify-content: space-between; align-items: center;
@@ -357,11 +360,11 @@
 
   .cp-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
   .btn-gold {
-    background: var(--gold-mist); border: 1px solid var(--gold-mist) !important; color: var(--void-deep);
+    background: var(--gold-mist); border: 1px solid var(--gold-mist) !important; color: #000;
     padding: 10px 22px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; border-radius: 6px;
     transition: all 0.25s ease;
   }
-  .btn-gold:hover { background: var(--gold-mist-bright); border-color: var(--gold-mist-bright) !important; }
+  .btn-gold:hover { background: #cbb085; border-color: #cbb085 !important; }
   .btn-ghost {
     background: transparent; border: 1px solid var(--hairline) !important; color: var(--stardust-dim);
     padding: 10px 22px; font-size: 0.85rem; border-radius: 6px; transition: all 0.25s ease;
@@ -433,9 +436,9 @@
   <div class="hero-bg"></div>
   <div class="stars"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow" id="displayHeroEyebrow">Maison de Parfum</p>
-    <h1 id="displayHeroTitle">Fragancias nacidas en el silencio entre las estrellas.</h1>
-    <p id="displayHeroDesc">Cada frasco de Nébula es una atmósfera propia: materias primas raras, acordes poco convencionales y una identidad olfativa que no se parece a nada que hayas olido antes.</p>
+    <p class="hero-eyebrow" id="displayHeroEyebrow"></p>
+    <h1 id="displayHeroTitle">TU PRESENCIA HABLA ANTES QUE TU.</h1>
+    <p id="displayHeroDesc">Fragancias exclusivas para quienes no pasan desapercibidos.</p>
     <a href="#coleccion" class="btn-primary" id="displayHeroBtn">Explorar la colección</a>
   </div>
 </section>
@@ -461,6 +464,7 @@
     </div>
   </div>
 
+  <!-- 📍 AQUÍ SE MUESTRAN LOS PERFUMES EN LA PÁGINA -->
   <div class="grid" id="productGrid"></div>
 </main>
 
@@ -475,7 +479,7 @@
         <button class="admin-trigger" id="openAdminBtn" type="button">⚙️ Panel de Control</button>
       </div>
     </div>
-    <p class="footer-copy" id="displayFooterText">© <span id="year"></span> Nébula Parfums. Todas las fragancias son elaboraciones artesanales de edición limitada.</p>
+    <p class="footer-copy" id="displayFooterText">© 2026 Nébula Parfums.</p>
   </div>
 </footer>
 
@@ -656,29 +660,29 @@
           <div class="cp-field">
             <label>Color Dorado Brillante (Brillo)</label>
             <div class="color-picker-group">
-              <input type="color" id="colGoldBright" value="#d4b483">
-              <span id="valGoldBright">#d4b483</span>
+              <input type="color" id="colGoldBright" value="#b8996b">
+              <span id="valGoldBright">#b8996b</span>
             </div>
           </div>
           <div class="cp-field">
             <label>Fondo de la Página (Void)</label>
             <div class="color-picker-group">
-              <input type="color" id="colVoid" value="#000000">
-              <span id="valVoid">#000000</span>
+              <input type="color" id="colVoid" value="#0a0a0a">
+              <span id="valVoid">#0a0a0a</span>
             </div>
           </div>
           <div class="cp-field">
             <label>Fondo Tarjetas / Tarjetas (Ink)</label>
             <div class="color-picker-group">
-              <input type="color" id="colInk" value="#0f0d16">
-              <span id="valInk">#0f0d16</span>
+              <input type="color" id="colInk" value="#0a0a0a">
+              <span id="valInk">#0a0a0a</span>
             </div>
           </div>
           <div class="cp-field">
             <label>Color de Texto Principal</label>
             <div class="color-picker-group">
-              <input type="color" id="colStardust" value="#e8e3d8">
-              <span id="valStardust">#e8e3d8</span>
+              <input type="color" id="colStardust" value="#f5f5f7">
+              <span id="valStardust">#f5f5f7</span>
             </div>
           </div>
           <div class="cp-field">
@@ -710,10 +714,13 @@
 (function() {
   'use strict';
 
-  const STORAGE_KEY_PRODUCTS = 'nebulaParfums_products_v2';
-  const STORAGE_KEY_CONFIG = 'nebulaParfums_config_v2';
+  const STORAGE_KEY_PRODUCTS = 'nebulaParfums_products_v3';
+  const STORAGE_KEY_CONFIG = 'nebulaParfums_config_v3';
   const ADMIN_PASSCODE = 'Sqr1027661736*';
 
+  /* =========================================================================
+   * 📍 AQUÍ ES DONDE COLOCAS Y EDITAS LOS PERFUMES POR DEFECTO DEL CATÁLOGO
+   * ========================================================================= */
   const defaultProducts = [
     {
       id: 'p1',
@@ -739,24 +746,24 @@
   ];
 
   const defaultConfig = {
-    heroEyebrow: 'Maison de Parfum',
-    heroTitle: 'Fragancias nacidas en el silencio entre las estrellas.',
-    heroDesc: 'Cada frasco de Nébula es una atmósfera propia: materias primas raras, acordes poco convencionales y una identidad olfativa que no se parece a nada que hayas olido antes.',
+    heroEyebrow: '',
+    heroTitle: 'TU PRESENCIA HABLA ANTES QUE TU.',
+    heroDesc: 'Fragancias exclusivas para quienes no pasan desapercibidos.',
     heroBtnText: 'Explorar la colección',
     instagramUrl: 'https://www.instagram.com/nebulaparfums/',
-    footerText: '© ' + new Date().getFullYear() + ' Nébula Parfums. Todas las fragancias son elaboraciones artesanales de edición limitada.',
+    footerText: '© 2026 Nébula Parfums.',
     headerLogoUrl: 'https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png',
     footerLogoUrl: 'https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png',
-    bgImageUrl: '',
+    bgImageUrl: 'https://i.ibb.co/3yKHhXX4/Perfumes-Nebula-Fondo.png',
     fontHeading: "'Cormorant Garamond', serif",
     fontBody: "'Manrope', sans-serif",
     customFontCss: '',
     colGold: '#b8996b',
-    colGoldBright: '#d4b483',
-    colVoid: '#000000',
-    colInk: '#0f0d16',
-    colStardust: '#e8e3d8',
-    colHairline: 'rgba(184,153,107,0.22)'
+    colGoldBright: '#b8996b',
+    colVoid: '#0a0a0a',
+    colInk: '#0a0a0a',
+    colStardust: '#f5f5f7',
+    colHairline: 'rgba(184,153,107,0.35)'
   };
 
   let products = [];
@@ -858,7 +865,7 @@
   }
 
   function hexOnly(colorStr) {
-    if(!colorStr) return '#000000';
+    if(!colorStr) return '#0a0a0a';
     if(colorStr.startsWith('#') && colorStr.length === 7) return colorStr;
     return '#b8996b';
   }
@@ -1169,7 +1176,6 @@
 
   document.getElementById('searchInput').addEventListener('input', renderCatalog);
   document.getElementById('sortSelect').addEventListener('change', renderCatalog);
-  document.getElementById('year').textContent = new Date().getFullYear();
 
   loadData();
   applyConfigToUI();
