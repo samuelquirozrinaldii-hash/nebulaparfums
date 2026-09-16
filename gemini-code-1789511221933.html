@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title id="siteTitle">Nébula Parfums</title>
-<link rel="icon" type="image/png" href="https://i.ibb.co/jZ5y4GpK/NE-BULA-BLANCO.png">
+
+<!-- Mini Logo Encabezado Página (Navegador) -->
+<link rel="icon" type="image/webp" href="assets/NEBULA-BLANCO.webp">
 <meta name="description" content="Nébula Parfums — TU PRESENCIA HABLA ANTES QUE TÚ.">
 
+<!-- Google Fonts optimizado -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -23,7 +26,6 @@
     --hairline-soft: rgba(255, 255, 255, 0.08);
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Manrope', sans-serif;
-    --bg-image-url: url('https://i.ibb.co/3yKHhXX4/Perfumes-Nebula-Fondo.png');
     --max-w: 1200px;
   }
 
@@ -40,10 +42,6 @@
 
   body {
     background-color: var(--void);
-    background-image: var(--bg-image-url);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     color: var(--stardust);
     font-family: var(--font-body);
     font-size: 16px;
@@ -52,6 +50,15 @@
     min-height: 100vh;
     overflow-x: hidden;
     width: 100%;
+    transition: background-image 0.5s ease-in-out;
+  }
+
+  /* Logo Fondo De La Pagina */
+  body.bg-loaded {
+    background-image: url('assets/Perfumes-Nebula-Fondo.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4 {
@@ -70,9 +77,7 @@
     width: 100%;
   }
 
-  /* ----------------------------------------------------
-     INTRODUCCIÓN CINEMATOGRÁFICA
-  ---------------------------------------------------- */
+  /* INTRODUCCIÓN CINEMATOGRÁFICA */
   #nebula-intro {
     position: fixed;
     top: 0;
@@ -177,9 +182,7 @@
     100% { opacity: 1; }
   }
 
-  /* ----------------------------------------------------
-     HEADER DE EXTREMO A EXTREMO (RESPONSIVE)
-  ---------------------------------------------------- */
+  /* HEADER */
   header {
     position: sticky;
     top: 0;
@@ -222,9 +225,7 @@
 
   nav.top-nav a:hover { color: var(--gold-mist) !important; }
 
-  /* ----------------------------------------------------
-     HERO SECTION
-  ---------------------------------------------------- */
+  /* HERO SECTION */
   .hero {
     position: relative;
     min-height: 70vh;
@@ -284,9 +285,7 @@
     box-shadow: 0 0 20px rgba(184, 153, 107, 0.25);
   }
 
-  /* ----------------------------------------------------
-     BANDA DE MARCAS
-  ---------------------------------------------------- */
+  /* BANDA DE MARCAS */
   .brands-banner {
     width: 100%;
     background: rgba(10, 10, 10, 0.65);
@@ -342,9 +341,7 @@
     filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(184, 153, 107, 0.85));
   }
 
-  /* ----------------------------------------------------
-     SECCIONES EDITORIALES Y RESPONSIVE
-  ---------------------------------------------------- */
+  /* SECCIONES EDITORIALES */
   .editorial-section {
     padding: 70px 0;
     position: relative;
@@ -358,7 +355,6 @@
     opacity: 0.7;
   }
 
-  /* 1. NUESTRA ESENCIA */
   .esencia-container {
     text-align: center;
     max-width: 800px;
@@ -388,7 +384,6 @@
     color: #d8d8d8;
   }
 
-  /* 2. EL COMIENZO DE NÉBULA */
   .comienzo-card {
     background: rgba(15, 15, 15, 0.65);
     backdrop-filter: blur(12px);
@@ -417,7 +412,6 @@
 
   .comienzo-text:last-child { margin-bottom: 0; }
 
-  /* 3. ¿POR QUÉ NÉBULA? */
   .porque-title {
     text-align: center;
     font-size: clamp(2.2rem, 4.5vw, 3.4rem);
@@ -465,7 +459,6 @@
     line-height: 1.6;
   }
 
-  /* 4. ENCUENTRA TU AROMA */
   .aroma-header {
     text-align: center;
     margin-bottom: 40px;
@@ -520,7 +513,6 @@
     line-height: 1.6;
   }
 
-  /* 5. NUESTRO COMPROMISO */
   .compromiso-title {
     text-align: center;
     font-size: clamp(2.2rem, 4.5vw, 3.4rem);
@@ -559,9 +551,7 @@
     line-height: 1.6;
   }
 
-  /* ----------------------------------------------------
-     CATÁLOGO DE PRODUCTOS
-  ---------------------------------------------------- */
+  /* CATÁLOGO DE PRODUCTOS */
   .catalog {
     padding: 70px 0 90px;
     border-top: 1px solid var(--hairline-soft);
@@ -688,9 +678,7 @@
     background: rgba(184,153,107,0.12);
   }
 
-  /* ----------------------------------------------------
-     CIERRE DE MARCA CINEMATOGRÁFICO
-  ---------------------------------------------------- */
+  /* CIERRE DE MARCA CINEMATOGRÁFICO */
   .brand-closure {
     position: relative;
     padding: 110px 0 100px;
@@ -765,121 +753,43 @@
     transform: translateY(0);
   }
 
-  /* ----------------------------------------------------
-     MEDIA QUERIES (DISPOSITIVOS MÓVILES Y TABLETS)
-  ---------------------------------------------------- */
+  /* RESPONSIVE */
   @media (max-width: 768px) {
-    .header-inner-wide {
-      padding: 12px 18px;
-    }
-
-    .logo-link img {
-      height: 30px;
-    }
-
-    nav.top-nav {
-      gap: 16px;
-    }
-
-    nav.top-nav a {
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-    }
-
-    .hero {
-      padding: 50px 0 40px;
-      min-height: auto;
-    }
-
-    .brands-banner {
-      padding: 28px 0;
-      margin-bottom: 40px;
-    }
-
-    .brands-banner-inner {
-      justify-content: center;
-      text-align: center;
-      gap: 20px;
-    }
-
-    .brands-banner-logos {
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .brand-logo-img {
-      height: 35px;
-    }
-
-    .editorial-section {
-      padding: 46px 0;
-    }
-
-    .comienzo-card {
-      padding: 28px 20px;
-      border-left-width: 2px;
-    }
-
-    .porque-grid, 
-    .aroma-grid, 
-    .compromiso-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .porque-item, 
-    .aroma-card, 
-    .compromiso-box {
-      padding: 24px 18px;
-    }
-
-    .controls {
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .field {
-      flex: 1 1 100%;
-    }
-
-    .grid {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-    .brand-closure {
-      padding: 80px 0 70px;
-    }
-
-    .btn-original {
-      width: 100%;
-      max-width: 320px;
-      padding: 14px 20px;
-    }
-
-    .footer-inner {
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
+    .header-inner-wide { padding: 12px 18px; }
+    .logo-link img { height: 30px; }
+    nav.top-nav { gap: 16px; }
+    nav.top-nav a { font-size: 0.75rem; letter-spacing: 0.05em; }
+    .hero { padding: 50px 0 40px; min-height: auto; }
+    .brands-banner { padding: 28px 0; margin-bottom: 40px; }
+    .brands-banner-inner { justify-content: center; text-align: center; gap: 20px; }
+    .brands-banner-logos { justify-content: center; gap: 20px; }
+    .brand-logo-img { height: 35px; }
+    .editorial-section { padding: 46px 0; }
+    .comienzo-card { padding: 28px 20px; border-left-width: 2px; }
+    .porque-grid, .aroma-grid, .compromiso-grid { grid-template-columns: 1fr; gap: 20px; }
+    .porque-item, .aroma-card, .compromiso-box { padding: 24px 18px; }
+    .controls { flex-direction: column; gap: 16px; }
+    .field { flex: 1 1 100%; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .brand-closure { padding: 80px 0 70px; }
+    .btn-original { width: 100%; max-width: 320px; padding: 14px 20px; }
+    .footer-inner { flex-direction: column; justify-content: center; text-align: center; }
   }
 
   @media (max-width: 480px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
+    .grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- INTRODUCCIÓN CINEMATOGRÁFICA -->
+<!-- Logo de animacion -->
 <div id="nebula-intro">
   <canvas id="nebula-canvas"></canvas>
   <div class="intro-viewport">
     <div class="intro-logo-container">
       <div class="intro-logo-wrapper">
-        <img class="intro-logo-img" src="https://i.ibb.co/jZ5y4GpK/NE-BULA-BLANCO.png" alt="Nébula Parfums" loading="eager" decoding="async">
+        <img class="intro-logo-img" src="assets/NEBULA-BLANCO.webp" alt="Nébula Parfums" loading="eager" fetchpriority="high" decoding="async">
       </div>
       <div class="intro-brand-title">NÉBULA PARFUMS</div>
       <div class="intro-brand-subtitle">TU PRESENCIA HABLA ANTES QUE TÚ</div>
@@ -887,11 +797,11 @@
   </div>
 </div>
 
-<!-- HEADER Y NAVEGACIÓN A LOS EXTREMOS -->
+<!-- Logo de arriba a la izquierda -->
 <header class="fade-in-element">
   <div class="header-inner-wide">
     <a href="#top" class="logo-link">
-      <img src="https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png" alt="Nébula Parfums" loading="eager" decoding="async">
+      <img src="assets/NebulaParfums.webp" alt="Nébula Parfums" loading="eager" decoding="async">
     </a>
     <nav class="top-nav">
       <a href="#esencia">Esencia</a>
@@ -910,40 +820,40 @@
   </div>
 </section>
 
-<!-- BANDA DE MARCAS DISPONIBLES -->
+<!-- LOGOS DE MARCAS -->
 <section class="brands-banner fade-in-element">
   <div class="brands-banner-inner">
     <h2 class="brands-banner-title">Todas Nuestras<br>Marcas Disponibles...</h2>
     <div class="brands-banner-logos">
-      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/HphH44sT/image-removebg-preview-3.png" alt="Afnan" loading="eager" decoding="async">
-      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/hbCGZM0/image-removebg-preview.png" alt="Lattafa" loading="eager" decoding="async">
-      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/W4Vr2c5g/image-removebg-preview-4.png" alt="Jean Paul Gaultier" loading="eager" decoding="async">
-      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/vb7WPnG/image-removebg-preview-1.png" alt="Louis Vuitton" loading="eager" decoding="async">
-      <img class="brand-logo-item brand-logo-img" src="https://i.ibb.co/MDYNYWQg/image-removebg-preview-2.png" alt="YSL" loading="eager" decoding="async">
+      <img class="brand-logo-item brand-logo-img" src="assets/Afnan.webp" alt="Afnan" loading="lazy" decoding="async">
+      <img class="brand-logo-item brand-logo-img" src="assets/Lataffa.webp" alt="Lattafa" loading="lazy" decoding="async">
+      <img class="brand-logo-item brand-logo-img" src="assets/JPG.webp" alt="Jean Paul Gaultier" loading="lazy" decoding="async">
+      <img class="brand-logo-item brand-logo-img" src="assets/LV.webp" alt="Louis Vuitton" loading="lazy" decoding="async">
+      <img class="brand-logo-item brand-logo-img" src="assets/YSL.webp" alt="YSL" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
 
-<!-- 1. SECCIÓN "NUESTRA ESENCIA" -->
+<!-- NUESTRA ESENCIA -->
 <section class="editorial-section wrap" id="esencia">
   <div class="esencia-container fade-in-element">
     <span class="esencia-subtitle">FILOSOFÍA</span>
     <h2 class="esencia-title">MÁS QUE UNA FRAGANCIA</h2>
     <div class="gold-divider"></div>
     <p class="esencia-text">
-      En NÉBULA PARFUMS creemos que un perfume es más que un aroma. Es parte de tu identidad, de tu estilo y de esos momentos que permanecen en la memoria.
+      En Nébula Parfums creemos que un perfume es más que un aroma. Es parte de tu identidad, de tu estilo y de esos momentos que permanecen en la memoria.
       <br><br>
       Seleccionamos fragancias pensadas para quienes quieren expresar su personalidad sin necesidad de decir una palabra.
     </p>
   </div>
 </section>
 
-<!-- 2. SECCIÓN "EL COMIENZO DE NÉBULA" -->
+<!-- EL COMIENZO DE NÉBULA -->
 <section class="editorial-section wrap">
   <div class="comienzo-card fade-in-element">
     <h2 class="comienzo-title">EL COMIENZO DE NÉBULA</h2>
     <p class="comienzo-text">
-      NÉBULA PARFUMS nace con una idea sencilla: hacer de la perfumería una experiencia.
+      Nébula Parfums nace con una idea sencilla... hacer de la perfumería una experiencia.
     </p>
     <p class="comienzo-text">
       Creamos un espacio donde encontrar fragancias reconocidas, descubrir nuevos aromas y elegir aquello que realmente representa tu estilo.
@@ -954,7 +864,7 @@
   </div>
 </section>
 
-<!-- 3. SECCIÓN "¿POR QUÉ NÉBULA?" -->
+<!-- ¿POR QUÉ NÉBULA? -->
 <section class="editorial-section wrap">
   <h2 class="porque-title fade-in-element">¿POR QUÉ NÉBULA?</h2>
   <div class="porque-grid">
@@ -976,7 +886,7 @@
   </div>
 </section>
 
-<!-- 4. SECCIÓN "ENCUENTRA TU AROMA" -->
+<!-- ENCUENTRA TU AROMA -->
 <section class="editorial-section wrap">
   <div class="aroma-header fade-in-element">
     <h2 class="aroma-title">ENCUENTRA TU AROMA</h2>
@@ -998,7 +908,7 @@
   </div>
 </section>
 
-<!-- 5. SECCIÓN "NUESTRO COMPROMISO" -->
+<!-- NUESTRO COMPROMISO -->
 <section class="editorial-section wrap">
   <h2 class="compromiso-title fade-in-element">NUESTRO COMPROMISO</h2>
   <div class="compromiso-grid">
@@ -1017,7 +927,7 @@
   </div>
 </section>
 
-<!-- 6. CATÁLOGO DE PRODUCTOS MEJORADO -->
+<!-- CATÁLOGO DE PRODUCTOS -->
 <main class="catalog wrap" id="coleccion">
   <div class="catalog-header fade-in-element">
     <h2 class="catalog-title">LA COLECCIÓN</h2>
@@ -1047,7 +957,7 @@
   <div class="grid" id="productGrid"></div>
 </main>
 
-<!-- 7. CIERRE DE MARCA CINEMATOGRÁFICO -->
+<!-- CIERRE DE MARCA -->
 <section class="brand-closure">
   <div class="brand-closure-bg"></div>
   <div class="brand-closure-content fade-in-element">
@@ -1061,8 +971,9 @@
 <footer>
   <div class="wrap">
     <div class="footer-inner">
+      <!-- Logo Nebula abajo del todo al lado izquierdo -->
       <a href="#top" class="logo-link">
-        <img src="https://i.ibb.co/Kp7QbvvW/image-removebg-preview.png" alt="Nébula Parfums" loading="eager" decoding="async">
+        <img src="assets/NebulaParfums.webp" alt="Nébula Parfums" loading="lazy" decoding="async">
       </a>
       <a href="https://www.instagram.com/nebulaparfums/" target="_blank" rel="noopener">@nebulaparfums</a>
     </div>
@@ -1074,9 +985,7 @@
 (function() {
   'use strict';
 
-  /* ----------------------------------------------------
-     1. CANVAS E INTRO
-  ---------------------------------------------------- */
+  /* CANVAS E INTRO PARTE OPTIMIZADA */
   const canvas = document.getElementById('nebula-canvas');
   const ctx = canvas.getContext('2d');
 
@@ -1088,7 +997,7 @@
     height = canvas.height = window.innerHeight;
   });
 
-  const particleCount = 20;
+  const particleCount = 18;
   const particles = [];
 
   class Particle {
@@ -1134,9 +1043,7 @@
   }
   renderAtmosphere();
 
-  /* ----------------------------------------------------
-     2. TIENDA Y RENDERIZADO
-  ---------------------------------------------------- */
+  /* TIENDA Y RENDERIZADO */
   const STORAGE_KEY_PRODUCTS = 'nebulaParfums_products_v4';
 
   const defaultProducts = [
@@ -1145,42 +1052,252 @@
       name: 'Afnan 9 PM Elixir',
       notes: 'Una fragancia masculina de perfil especiado y oriental, de la casa Afnan.',
       price: 280000,
-      image: 'https://i.ibb.co/XZWy6sJz/image.png'
+      image: 'assets/p1.webp'
     },
     {
       id: 'p2',
       name: 'Jean Paul Gaultier Le Male Le Parfum',
       notes: 'Una fragancia masculina de perfil amaderado y especiado, de Jean Paul Gaultier.',
       price: 530000,
-      image: 'https://i.ibb.co/sJdvHJRP/image.png'
+      image: 'assets/p2.webp'
     },
     {
       id: 'p3',
       name: 'Carolina Herrera Good Girl Blush Elixir',
       notes: 'Una fragancia femenina de perfil cítrico y floral, de Carolina Herrera.',
       price: 610000,
-      image: 'https://i.ibb.co/NnZTMBGc/image.png'
+      image: 'assets/p3.webp'
     },
     {
       id: 'p4',
       name: 'Afnan 9PM Eau de Parfum',
       notes: 'Una fragancia masculina de perfil amaderado y floral, de la casa Afnan.',
       price: 230000,
-      image: 'https://i.ibb.co/RTPhBHnR/image.png'
+      image: 'assets/p4.webp'
     },
     {
       id: 'p5',
       name: 'Afnan 9 PM Pour Femme EDP',
       notes: 'Una fragancia femenina de perfil floral y dulce, de la casa Afnan.',
       price: 250000,
-      image: 'https://i.ibb.co/VYZjQ1Cn/image.png'
+      image: 'assets/p5.webp'
     },
     {
       id: 'p6',
       name: 'Afnan 9PM Rebel Eau de Parfum',
       notes: 'Una fragancia unisex de perfil frutal y cítrico, de la casa Afnan.',
       price: 280000,
-      image: 'https://i.ibb.co/MxDWTmKV/image.png'
+      image: 'assets/p6.webp'
+    },
+        {
+      id: 'p7',
+      name: 'Ahli Corvus Eau de Parfum',
+      notes: 'Una fragancia unisex de perfil amaderado, de la casa Ahli.',
+      price: 440000,
+      image: 'assets/p7.webp'
+    },
+        {
+      id: 'p8',
+      name: 'Ahli Octans Eau de Parfum',
+      notes: 'Una fragancia unisex de perfil floral y cítrico, de la casa Ahli.',
+      price: 440000,
+      image: 'assets/p8.webp'
+    },
+        {
+      id: 'p9',
+      name: 'Ahli Vega Eau de Parfum',
+      notes: 'Una fragancia unisex de perfil amaderado y floral, de la casa Ahli.',
+      price: 440000,
+      image: 'assets/p9.webp'
+    },
+    {
+      id: 'p10',
+      name: 'Al Haramain Amber Oud Aqua Dubai',
+      notes: 'Una fragancia masculina de perfil oriental y cítrico, de la casa Al Haramain.',
+      price: 415000,
+      image: 'assets/p10.webp'
+    },
+        {
+      id: 'p11',
+      name: 'Al Haramain Amber Oud Dubai Night',
+      notes: 'Una fragancia masculina de perfil oriental y cítrico, de la casa Al Haramain.',
+      price: 360000,
+      image: 'assets/p11.webp'
+    },
+        {
+      id: 'p12',
+      name: 'Al Haramain Amber Oud Eau de Parfum',
+      notes: 'Una fragancia unisex de perfil amaderado y floral, de la casa Al Haramain.',
+      price: 400000,
+      image: 'assets/p12.webp'
+    },
+        {
+      id: 'p13',
+      name: 'Al Haramain Amber Oud Gold Edition',
+      notes: 'Una fragancia unisex de perfil oriental y amaderado, de la casa Al Haramain.',
+      price: 330000,
+      image: 'assets/p13.webp'
+    },
+        {
+      id: 'p14',
+      name: 'Al haramain amber oud gold edition 999.9',
+      notes: 'Una fragancia unisex de perfil cítrico y amaderado, de la casa Al Haramain. ',
+      price: 330000,
+      image: 'assets/p14.webp'
+    },
+        {
+      id: 'p15',
+      name: 'Al Haramain Amber Oud Gold Edition Extreme',
+      notes: 'Una fragancia unisex de perfil amaderado y cítrico, de la casa Al Haramain.',
+      price: 410000,
+      image: 'assets/p15.webp'
+    },
+            {
+      id: 'p16',
+      name: 'Al Haramain Detour noir',
+      notes: 'Una fragancia masculina de perfil cítrico y floral, de la casa Al Haramain.',
+      price: 250000,
+      image: 'assets/p16.webp'
+    },
+            {
+      id: 'p17',
+      name: 'Al Haramain L’Aventure',
+      notes: 'Una fragancia masculina de perfil cítrico y amaderado, de la casa Al Haramain.',
+      price: 230000,
+      image: 'assets/p17.webp'
+    },
+            {
+      id: 'p18',
+      name: 'Al Haramain L’Aventure Blanche',
+      notes: 'Una fragancia femenina de perfil amaderado y cítrico, de la casa Al Haramain.',
+      price: 230000,
+      image: 'assets/p18.webp'
+    },
+            {
+      id: 'p19',
+      name: 'Al Haramain L’Aventure Femme',
+      notes: 'Una fragancia femenina de perfil amaderado y frutal, de la casa Al Haramain.',
+      price: 230000,
+      image: 'assets/p19.webp'
+    },
+            {
+      id: 'p20',
+      name: 'Al Haramain L’Aventure Rose',
+      notes: 'Una fragancia femenina de perfil floral y frutal, de la casa Al Haramain.',
+      price: 240000,
+      image: 'assets/p20.webp'
+    },
+            {
+      id: 'p21',
+      name: 'Ariana Grande Cloud 2.0 Intense Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil cítrico y floral, de la casa Ariana Grande.',
+      price: 400000,
+      image: 'assets/p21.webp'
+    },
+            {
+      id: 'p22',
+      name: 'Ariana Grande Cloud Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil dulce y frutal, de la casa Ariana Grande.',
+      price: 330000,
+      image: 'assets/p22.webp'
+    },
+            {
+      id: 'p23',
+      name: 'Ariana Grande Cloud Pink Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil dulce y frutal, de la casa Ariana Grande.',
+      price: 330000,
+      image: 'assets/p24.webp'
+    },
+            {
+      id: 'p24',
+      name: 'Ariana Grande God Is A Woman Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil floral y frutal, de la casa Ariana Grande.',
+      price: 270000,
+      image: 'assets/p24.webp'
+    },
+            {
+      id: 'p25',
+      name: 'Ariana Grande Mod Blush Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil floral y frutal, de la casa Ariana Grande.',
+      price: 330000,
+      image: 'assets/p25.webp'
+    },
+            {
+      id: 'p26',
+      name: 'Ariana Grande Mod Vanilla Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil dulce y floral, de la casa Ariana Grande.',
+      price: 330000,
+      image: 'assets/p26.webp'
+    },
+            {
+      id: 'p27',
+      name: 'Ariana Grande R.E.M. Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil floral y oriental, de la casa Ariana Grande.',
+      price: 310000,
+      image: 'assets/p27.webp'
+    },
+            {
+      id: 'p28',
+      name: 'Ariana Grande Sweet Like Candy Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil frutal y floral, de la casa Ariana Grande.',
+      price: 280000,
+      image: 'assets/p28.webp'
+    },
+            {
+      id: 'p29',
+      name: 'Ariana Grande Thank U, Next 2.0 Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil frutal y floral, de la casa Ariana Grande.',
+      price: 310000,
+      image: 'assets/p29.webp'
+    },
+            {
+      id: 'p30',
+      name: 'Ariana Grande Thank U, Next Eau de Parfum',
+      notes: 'Una fragancia femenina de perfil frutal y floral, de la casa Ariana Grande.',
+      price: 310000,
+      image: 'assets/p30.webp'
+    },
+            {
+      id: 'p31',
+      name: 'Armaf Club de Nuit Iconic',
+      notes: 'Una fragancia masculina de perfil especiado y amaderado, de la casa Armaf.',
+      price: 280000,
+      image: 'assets/p31.webp'
+    },
+            {
+      id: 'p32',
+      name: 'Armaf Club De Nuit Imperiale',
+      notes: 'Una fragancia masculina de perfil amaderado y floral, de la casa Armaf.',
+      price: 240000,
+      image: 'assets/p32.webp'
+    },
+            {
+      id: 'p33',
+      name: 'Armaf Club De Nuit Intense Man EDT',
+      notes: 'Una fragancia masculina de perfil amaderado y especiado, de la casa Armaf.',
+      price: 210000,
+      image: 'assets/p33.webp'
+    },
+            {
+      id: 'p34',
+      name: 'Armaf club de nuit Maleka',
+      notes: 'Una fragancia femenina de perfil floral y amaderado, de la casa Armaf.',
+      price: 280000,
+      image: 'assets/p34.webp'
+    },
+            {
+      id: 'p35',
+      name: 'Armaf Club de Nuit Milestone',
+      notes: 'Una fragancia unisex de perfil cítrico y acuático, de la casa Armaf.',
+      price: 240000,
+      image: 'assets/p35.webp'
+    },
+                {
+      id: 'p36',
+      name: 'Armaf Club de Nuit Oud',
+      notes: 'Una fragancia masculina de perfil oriental y amaderado, de la casa Armaf.',
+      price: 370000,
+      image: 'assets/p36.webp'
     },
   ];
 
@@ -1246,9 +1363,7 @@
     `).join('');
   }
 
-  /* ----------------------------------------------------
-     3. INTERSECTION OBSERVER ANIMACIONES
-  ---------------------------------------------------- */
+  /* INTERSECTION OBSERVER ANIMACIONES */
   function initScrollObserver() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1276,10 +1391,12 @@
   loadProducts();
   renderCatalog();
 
+  // Activa el fondo general tras finalizar la intro
   setTimeout(() => {
     const introElement = document.getElementById('nebula-intro');
     if (introElement) {
       introElement.classList.add('fade-out');
+      document.body.classList.add('bg-loaded');
       initScrollObserver();
       setTimeout(() => {
         introElement.style.display = 'none';
